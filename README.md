@@ -97,9 +97,9 @@ API:
 
 The url to your repository and to your deployed project
 
-[Client repository Link](https://github.com/screeeen/project-client)
+[Client repository Link](https://github.com/willemprins93/curator-client)
 
-[Server repository Link](https://github.com/screeeen/project-server)
+[Server repository Link](https://github.com/willemprins93/curator-server)
 
 [Deployed App Link](http://heroku.com)
 
