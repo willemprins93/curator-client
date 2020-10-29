@@ -52,12 +52,16 @@ export default class EditCollection extends Component {
 
   render() {
     return (
-      <div>
+      <div className="collection">
         <h1>Edit Collection</h1>
-        <button onClick={this.saveCollection}>Save Changes</button>
-        <Link to="/user" className="site-text">
-          Cancel
-        </Link>
+        <nav>
+          <Link className="site-nav danger" to="/user">
+            Cancel
+          </Link>
+          <Link className="site-nav success" onClick={this.saveCollection}>
+            Save Changes
+          </Link>
+        </nav>
         <div className="image-list">
           {this.state.artworksLiked.map((artwork) => {
             return (

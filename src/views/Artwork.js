@@ -38,26 +38,36 @@ export default class Artwork extends Component {
     const { artwork, usersLiked } = this.state;
     console.log("THE ARTWORK: ", artwork);
     return (
-      <div className="artwork-details">
-        <img src={artwork.img} alt={artwork.title} />
-        <h1>{artwork.title}</h1>
-        <h2>{artwork.artist}</h2>
-        <h3>{artwork.artistNationality}</h3>
-        <h4>About the artist:</h4>
-        <p>{artwork.artistBio}</p>
-        <h4>Medium:</h4>
-        <p>{artwork.medium}</p>
-        <h4>Date:</h4>
-        <p>{artwork.date}</p>
-        <h4>Held at:</h4> <p>{artwork.collectingInstitution}</p>
-        <h2>{usersLiked.length} likes</h2>
-        {!usersLiked.includes(this.state.user._id) ? (
-          <Link to="#" onClick={this.likeArtwork}>
-            Like
-          </Link>
-        ) : (
-          <h2>You like this</h2>
-        )}
+      <div className="artwork-detail-page">
+        <div className="artwork-detail-img-block">
+          <img
+            className="artwork-detail-img"
+            src={artwork.img}
+            alt={artwork.title}
+          />
+        </div>
+        <div className="artwork-detail-text-block">
+          <div className="artwork-detail-text">
+            <h1>{artwork.title}</h1>
+            <h2>{artwork.artist}</h2>
+            <h3>{artwork.artistNationality}</h3>
+            <h4>About the artist:</h4>
+            <p>{artwork.artistBio}</p>
+            <h4>Medium:</h4>
+            <p>{artwork.medium}</p>
+            <h4>Date:</h4>
+            <p>{artwork.date}</p>
+            <h4>Held at:</h4> <p>{artwork.collectingInstitution}</p>
+            <h2>{usersLiked.length} likes</h2>
+            {!usersLiked.includes(this.state.user._id) ? (
+              <Link to="#" onClick={this.likeArtwork}>
+                Like
+              </Link>
+            ) : (
+              <h2>You like this</h2>
+            )}
+          </div>
+        </div>
       </div>
     );
   }

@@ -84,6 +84,15 @@ nav {
   color: rgb(99, 99, 99);
 }
 
+.danger {
+  text-decoration: none;
+  color: brown;
+}
+
+.success {
+  color: darkolivegreen;
+}
+
 h1 {
   text-align: center;
   color: rgb(44, 52, 70);
@@ -210,11 +219,6 @@ h3 {
   column-gap: 0px;
 }
 
-.image-box {
-  /* width: relative;
-  height: relative; */
-}
-
 .collection-image {
   width: 90%;
   height: auto;
@@ -228,7 +232,14 @@ h3 {
   padding: 0;
 }
 
-.artwork-details {
+.artwork-detail-page {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.artwork-detail-text {
   background-color: rgb(236, 235, 227);
   display: flex;
   flex-direction: column;
@@ -237,20 +248,39 @@ h3 {
   padding: 0 0 50px 0;
 }
 
-.artwork-details img {
-  max-width: 80%;
+.artwork-detail-text-block {
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 
-.artwork-details h3,
+.artwork-detail-img-block {
+  width: 50vw;
+  height: 100vh;
+  margin: 0 auto 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.artwork-detail-img {
+  max-width: 44vw;
+  max-height: 90vh;
+}
+
+.artwork-detail-text h3,
 h4,
 p {
+  text-align: left;
   padding: 5px;
   margin: 0 10%;
 }
 
-.artwork-details h1,
+.artwork-detail-text h1,
 h2 {
-  width: 80%;
+  text-align: left;
   color: rgb(44, 52, 70);
 }
 

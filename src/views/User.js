@@ -32,7 +32,7 @@ export default class User extends Component {
       <div className="collection">
         <h1>{user.name}'s Collection</h1>
         <nav>
-          <Link className="site-nav" to="/" onClick={this.handleLogout}>
+          <Link className="site-nav danger" to="/" onClick={this.handleLogout}>
             Log Out
           </Link>
           <Link className="site-nav" to="/user/editprofile">
