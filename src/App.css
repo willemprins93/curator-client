@@ -1,0 +1,304 @@
+body {
+  background-color: rgb(236, 235, 227);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Rubik", sans-serif;
+}
+
+h1,
+h2 {
+  font-weight: 500;
+}
+
+h3,
+h4 {
+  font-weight: 400;
+}
+
+p {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  font-weight: 800;
+  color: rgb(44, 52, 70);
+}
+
+form label,
+input {
+  font-family: "Lato", sans-serif;
+  display: block;
+  width: 200px;
+  padding: 10px;
+  height: auto;
+  text-align: center;
+}
+
+form input {
+  background-color: white;
+  color: rgb(44, 52, 70);
+  font-size: 16px;
+  border: none;
+  outline: none;
+}
+
+form button {
+  padding: 10px;
+  margin-top: 20px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: 800;
+  background-color: rgb(44, 52, 70);
+  color: lightgrey;
+}
+
+nav {
+  width: 80%;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Rubik", serif;
+  font-weight: 600;
+}
+
+.site-nav {
+  text-decoration: none;
+  color: rgb(99, 99, 99);
+}
+
+h1 {
+  text-align: center;
+  color: rgb(44, 52, 70);
+}
+
+.menu-nav {
+  display: block;
+  background-color: white;
+  width: 200px;
+  height: auto;
+  text-align: center;
+  padding: 10px;
+  margin: 20px;
+  color: rgb(58, 58, 58);
+  text-decoration: none;
+  font-weight: 800;
+  font-family: "Lato", sans-serif;
+}
+
+.buttons {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 0 20px 0;
+}
+
+.dislike-button,
+.like-button {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.dislike-button {
+  background-color: brown;
+}
+
+.dislike-button:active {
+  background-color: rgb(190, 81, 81);
+}
+
+.like-button {
+  background-color: darkolivegreen;
+}
+
+.like-button:active {
+  background-color: rgb(149, 173, 108);
+}
+
+.spinner-card {
+  width: 70vw;
+  /* background-color: white; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0 0 0;
+  margin-bottom: 50px;
+}
+
+.spinner-card p {
+  margin: 10px 0 -30px 0;
+}
+
+.curator-card,
+.artwork-card {
+  width: 70vw;
+  /* background-color: white; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 50px 0;
+}
+
+.curator-card h1 {
+  width: 80%;
+  text-align: start;
+  margin: 5px;
+  color: rgb(44, 52, 70);
+}
+
+.curator-card h2,
+h3 {
+  width: 80%;
+  text-align: end;
+  margin: 0 auto;
+  color: rgb(88, 92, 102);
+}
+
+.curator-image {
+  max-width: 80%;
+}
+
+.collection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  min-height: 100vh;
+  background-color: rgb(236, 235, 227);
+}
+
+.collection h1 {
+  color: rgb(44, 52, 70);
+}
+
+.image-list {
+  width: 100%;
+  /* Prevent vertical gaps */
+  line-height: 0;
+
+  -webkit-column-count: 3;
+  -webkit-column-gap: 0px;
+  -moz-column-count: 3;
+  -moz-column-gap: 0px;
+  column-count: 3;
+  column-gap: 0px;
+}
+
+.image-box {
+  /* width: relative;
+  height: relative; */
+}
+
+.collection-image {
+  width: 90%;
+  height: auto;
+  padding: 5%;
+  transition: 0.2s ease-in-out;
+}
+
+.collection-image :hover {
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+
+.artwork-details {
+  background-color: rgb(236, 235, 227);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 50px 0;
+}
+
+.artwork-details img {
+  max-width: 80%;
+}
+
+.artwork-details h3,
+h4,
+p {
+  padding: 5px;
+  margin: 0 10%;
+}
+
+.artwork-details h1,
+h2 {
+  width: 80%;
+  color: rgb(44, 52, 70);
+}
+
+.delete-icon,
+.delete-icon img {
+  width: 20px;
+  background-image: "/public/images/remove.png";
+}
+
+.delete-icon {
+  position: relative;
+  bottom: 40px;
+  left: 20px;
+}
+
+.img-box img {
+  width: 90%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.img-box {
+  margin: 50px 10%;
+  width: 90%;
+  height: 200px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.img-box:hover {
+  opacity: 1;
+}
+
+.img-box h1 {
+  display: inline-block;
+  width: 60%;
+  text-align: left;
+  position: relative;
+  top: -200px;
+  margin: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .collection {
+    width: 100%;
+  }
+
+  .curator-card {
+    width: 100%;
+  }
+}

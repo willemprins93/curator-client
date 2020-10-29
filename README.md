@@ -50,7 +50,7 @@ API:
 | `/user/editcollection` | EditCollection | user only `<PrivateRoute>` | Edit collection of liked artworks                                                                     |
 | `/user/editprofile`    | EditUser       | user only `<PrivateRoute>` | Edit user info                                                                                        |
 | `/artwork/:id`         | Artwork        | user only `<PrivateRoute>` | Details of an artwork                                                                                 |
-| `/mostlikedworks`      | LikedWorks     | user only `<PrivateRoute>` | List of all liked works                                                                               |
+| `/likedworks`          | LikedWorks     | user only `<PrivateRoute>` | List of all liked works                                                                               |
 | `/logout`              | n/a            | user only `<PrivateRoute>` | Logs user out                                                                                         |
 
 ## Components
