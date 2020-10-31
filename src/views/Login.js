@@ -39,7 +39,7 @@ class Login extends React.Component {
   render() {
     const { email, password, errorMessage } = this.state;
     return (
-      <div>
+      <div className="form-page">
         {errorMessage !== "" && errorMessage}
         <form onSubmit={this.handleSubmit}>
           <label>Email: </label>

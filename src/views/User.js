@@ -28,25 +28,45 @@ export default class User extends Component {
 
   render() {
     const { user } = this.state;
+    console.log(user);
+    const sortedWorks = user.artworksLiked.reverse();
     return (
       <div className="collection">
         <h1>{user.name}'s Collection</h1>
         <nav>
-          <Link className="site-nav danger" to="/" onClick={this.handleLogout}>
-            Log Out
-          </Link>
-          <Link className="site-nav" to="/user/editprofile">
-            Edit Info
-          </Link>
-          <Link className="site-nav" to="/user/editcollection">
-            Edit Collection
-          </Link>
+          <>
+            <Link className="user-nav" to="/user/editprofile">
+              Edit Info
+            </Link>
+          </>
+          <>
+            <Link className="user-nav" to="/user/editcollection">
+              Edit Collection
+            </Link>
+          </>
+          <>
+            <Link
+              className="user-nav danger"
+              to="/"
+              onClick={this.handleLogout}
+            >
+              Log Out
+            </Link>
+          </>
         </nav>
         <div className="image-list">
-          {user.artworksLiked.map((artwork, index) => {
+          {sortedWorks.map((artwork, index) => {
             return (
               <div className="image-box" key={index}>
                 <Link to={`/artwork/${artwork._id}`}>
+                  <h1 className="mini-title">
+                    {artwork.title}
+                    <br />
+                    <h4>
+                      <i>{artwork.artist}</i>
+                    </h4>
+                    <p>{artwork.date}</p>
+                  </h1>
                   <img
                     className="collection-image"
                     src={artwork.img}

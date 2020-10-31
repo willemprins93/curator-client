@@ -39,7 +39,7 @@ class Signup extends React.Component {
   render() {
     const { name, email, password, errorMessage } = this.state;
     return (
-      <div>
+      <div className="form-page">
         {errorMessage !== "" && errorMessage}
         <form onSubmit={this.handleSubmit}>
           <label>Name: </label>

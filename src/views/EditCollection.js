@@ -15,7 +15,7 @@ export default class EditCollection extends Component {
       .then((response) => {
         this.setState({
           user: response,
-          artworksLiked: response.artworksLiked,
+          artworksLiked: response.artworksLiked.reverse(),
         });
       })
       .catch((err) => console.log(err));
@@ -66,6 +66,13 @@ export default class EditCollection extends Component {
           {this.state.artworksLiked.map((artwork) => {
             return (
               <div className="image-box">
+                <h1 className="mini-title">
+                  {artwork.title}
+                  <br />
+                  <h4>
+                    <i>{artwork.artist}</i>
+                  </h4>
+                </h1>
                 <img
                   className="collection-image"
                   src={artwork.img}

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter, Switch, NavLink } from "react-router-dom";
 import "./App.css";
 import AnonRoute from "./components/auth/AnonRoute";
 import PrivateRoute from "./components/auth/PrivateRoute";
@@ -57,16 +57,29 @@ class App extends React.Component {
     return (
       <div className="App">
         <BrowserRouter>
-          {/* <nav>
-            {authenticated && <Link to="/"> Home </Link>}
-            {!authenticated && <Link to="/login"> Login </Link>}
-            {!authenticated && <Link to="/signup"> Signup </Link>}
-            {authenticated && (
-              <Link to={"/"} onClick={this.handleLogout}>
-                Logout
-              </Link>
-            )}
-          </nav> */}
+          <nav>
+            <NavLink
+              activeClassName="is-active"
+              className="site-nav"
+              to="/mostlikedworks"
+            >
+              Most Liked
+            </NavLink>
+            <NavLink
+              activeClassName="is-active"
+              className="site-nav"
+              to="/curator"
+            >
+              Curator
+            </NavLink>
+            <NavLink
+              activeClassName="is-active"
+              className="site-nav"
+              to="/user"
+            >
+              My Collection
+            </NavLink>
+          </nav>
           <Switch>
             <AnonRoute
               exact

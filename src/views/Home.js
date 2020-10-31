@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div>
-      <h1>Home Page</h1>
+    <div className="home-page">
+      <h1>Curator</h1>
+      <p style={{ textAlign: "center" }}>Discover art from around the world!</p>
       <Link className="menu-nav" to="/login">
         Log In
       </Link>

@@ -18,6 +18,13 @@ export const addArtwork = ({ userId, artwork, artists, image }) => {
     .catch((err) => err);
 };
 
+export const likeArtwork = ({ userId, artworkId }) => {
+  return service
+    .post(`artwork/addliked`, { userId, artworkId })
+    .then((response) => response.data)
+    .catch((err) => err);
+};
+
 export const getArtwork = (id) => {
   return service
     .get(`artwork/liked/${id}`)

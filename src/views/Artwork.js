@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { getArtwork, addArtwork } from "../services/curatorService";
-import { Link } from "react-router-dom";
+import { getArtwork, likeArtwork } from "../services/curatorService";
 
 export default class Artwork extends Component {
   state = {
@@ -22,14 +21,18 @@ export default class Artwork extends Component {
 
   likeArtwork = () => {
     const { artwork, user } = this.state;
-    addArtwork({
+    likeArtwork({
       userId: user._id,
-      artwork,
-      artists: artwork.artist,
-      image: artwork.img,
+      artworkId: artwork._id,
     })
       .then((response) => {
-        console.log("Success!!", response);
+        const { updatedUser, updatedArtwork } = response;
+        this.setState({
+          user: updatedUser,
+          artworkId: updatedArtwork._id,
+          artwork: updatedArtwork,
+          usersLiked: updatedArtwork.usersLiked,
+        });
       })
       .catch((err) => console.log("Error found: ", err));
   };
@@ -58,11 +61,16 @@ export default class Artwork extends Component {
             <h4>Date:</h4>
             <p>{artwork.date}</p>
             <h4>Held at:</h4> <p>{artwork.collectingInstitution}</p>
-            <h2>{usersLiked.length} likes</h2>
+            <h2>
+              {usersLiked.length}{" "}
+              {usersLiked.length > 1 || usersLiked.length === 0
+                ? "likes"
+                : "like"}
+            </h2>
             {!usersLiked.includes(this.state.user._id) ? (
-              <Link to="#" onClick={this.likeArtwork}>
+              <button className="like-liked" onClick={this.likeArtwork}>
                 Like
-              </Link>
+              </button>
             ) : (
               <h2>You like this</h2>
             )}

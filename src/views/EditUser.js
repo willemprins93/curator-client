@@ -33,9 +33,9 @@ export default class EditUser extends Component {
   render() {
     const { name, email } = this.state;
     return (
-      <div>
+      <div className="form-page">
         <form onSubmit={this.handleSubmit}>
-          <label>Name: </label>
+          <label>Edit name: </label>
           <input
             name="name"
             value={name}
@@ -43,7 +43,7 @@ export default class EditUser extends Component {
             required={true}
             type="text"
           />
-          <label>Email: </label>
+          <label>Edit email: </label>
           <input
             name="email"
             value={email}

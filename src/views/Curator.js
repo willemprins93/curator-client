@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { randomArtwork, addArtwork } from "../services/curatorService";
-import { Link } from "react-router-dom";
 import ReactLoading from "react-loading";
 
 class Curator extends Component {
@@ -75,18 +74,16 @@ class Curator extends Component {
 
     return (
       <div className="curator-card">
-        <h1>Curator Page</h1>
-        <br />
         {this.state.isLoading ? (
           <div className="spinner-card">
-            <ReactLoading type={"spin"} color={"black"} />
+            <ReactLoading type={"spin"} color={"#353831"} />
             <br />
             <p>
               <i>Loading random artwork...</i>
             </p>
             <br />
             <p>
-              <i>This may take a while...</i>
+              <i>One moment please...</i>
             </p>
           </div>
         ) : (
@@ -103,20 +100,12 @@ class Curator extends Component {
         )}
         <div className="buttons">
           <button className="dislike-button" onClick={this.dislikeArtwork}>
-            No
+            <img src="/images/forward-button.png" alt="forward-button"></img>
           </button>
           <button className="like-button" onClick={this.likeArtwork}>
-            Yes
+            <img src="/images/heart.png" alt="like-button" />
           </button>
         </div>
-        <nav>
-          <Link className="site-nav" to="/mostlikedworks">
-            Most Liked
-          </Link>
-          <Link className="site-nav" to="/user">
-            My Collection
-          </Link>
-        </nav>
       </div>
     );
   }

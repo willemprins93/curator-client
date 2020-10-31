@@ -2,6 +2,13 @@ body {
   background-color: rgb(236, 235, 227);
 }
 
+.App {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 h1,
 h2,
 h3,
@@ -24,10 +31,19 @@ p {
   font-weight: 300;
 }
 
-.App {
+.home-page {
+  height: calc(100vh - 80px);
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
+}
+
+.form-page {
+  height: calc(100vh - 80px);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -38,7 +54,7 @@ form {
 
 form label {
   font-weight: 800;
-  color: rgb(44, 52, 70);
+  color: 353831;
 }
 
 form label,
@@ -66,22 +82,49 @@ form button {
   outline: none;
   font-size: 16px;
   font-weight: 800;
-  background-color: rgb(44, 52, 70);
-  color: lightgrey;
+  background-color: #353831;
+  color: white;
 }
 
 nav {
   width: 80%;
-  margin: 20px 0;
+  height: 80px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-family: "Rubik", serif;
   font-weight: 600;
 }
 
 .site-nav {
+  display: block;
+  padding: 5px 10px;
+  text-align: center;
   text-decoration: none;
   color: rgb(99, 99, 99);
+  border: 2px solid rgb(99, 99, 99, 0);
+}
+
+.user-nav {
+  display: block;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(99, 99, 99);
+  border: 2px solid rgb(99, 99, 99, 0);
+  transition: all 0.2s ease-in-out;
+}
+
+.user-nav:hover {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.is-active {
+  color: 353831;
+  border: 2px solid #353831;
 }
 
 .danger {
@@ -95,7 +138,7 @@ nav {
 
 h1 {
   text-align: center;
-  color: rgb(44, 52, 70);
+  color: #353831;
 }
 
 .menu-nav {
@@ -113,38 +156,63 @@ h1 {
 }
 
 .buttons {
-  width: 60%;
+  width: 75%;
   display: flex;
   justify-content: space-between;
-  margin: 40px 0 20px 0;
+  margin: 0 0 20px 0;
 }
 
 .dislike-button,
 .like-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100px;
   height: 100px;
   border-radius: 50%;
   border: none;
   outline: none;
-  color: white;
+  color: rgb(236, 235, 227);
   font-size: 20px;
   font-weight: 600;
 }
 
+.dislike-button img,
+.like-button img {
+  width: 40px;
+}
+
+.dislike-button img {
+  position: relative;
+  left: 3px;
+  transition: all 0.1s ease-in-out;
+}
+
 .dislike-button {
-  background-color: brown;
+  border: 4px solid black;
+}
+
+.dislike-button:hover img,
+.like-button:hover img {
+  width: 50px;
 }
 
 .dislike-button:active {
-  background-color: rgb(190, 81, 81);
+  background-color: black;
+}
+
+.like-button img {
+  position: relative;
+  top: 2px;
+  transition: all 0.1s ease-in-out;
 }
 
 .like-button {
-  background-color: darkolivegreen;
+  border: 4px solid #d4443c;
 }
 
 .like-button:active {
-  background-color: rgb(149, 173, 108);
+  background-color: #d4443c;
 }
 
 .spinner-card {
@@ -154,42 +222,46 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px 0 0 0;
-  margin-bottom: 50px;
 }
 
 .spinner-card p {
+  text-align: center;
   margin: 10px 0 -30px 0;
 }
 
 .curator-card,
 .artwork-card {
-  width: 70vw;
   /* background-color: white; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 0 50px 0;
 }
 
 .curator-card h1 {
-  width: 80%;
+  width: 75%;
   text-align: start;
   margin: 5px;
   color: rgb(44, 52, 70);
 }
 
+.spinner-card,
+.artwork-card {
+  height: 70vh;
+  width: 50vw;
+}
+
 .curator-card h2,
 h3 {
-  width: 80%;
+  width: 75%;
   text-align: end;
   margin: 0 auto;
   color: rgb(88, 92, 102);
 }
 
 .curator-image {
-  max-width: 80%;
+  max-width: auto;
+  max-height: 45vh;
 }
 
 .collection {
@@ -203,7 +275,7 @@ h3 {
 }
 
 .collection h1 {
-  color: rgb(44, 52, 70);
+  color: #353831;
 }
 
 .image-list {
@@ -223,13 +295,25 @@ h3 {
   width: 90%;
   height: auto;
   padding: 5%;
-  transition: 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
-.collection-image :hover {
-  width: 100%;
-  height: auto;
-  padding: 0;
+.mini-title {
+  display: block;
+  color: white !important;
+  line-height: 1em;
+  position: absolute;
+  text-align: left;
+  width: 18%;
+  margin: 50px 40px;
+  font-size: 24px;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.image-box {
+  transition: all 0.5s ease-in-out;
 }
 
 .artwork-detail-page {
@@ -241,24 +325,21 @@ h3 {
 
 .artwork-detail-text {
   background-color: rgb(236, 235, 227);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 0 0 50px 0;
 }
 
 .artwork-detail-text-block {
+  min-height: calc(100vh - 80px);
   width: 50vw;
-  height: 100vh;
+  height: auto;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
 }
 
 .artwork-detail-img-block {
+  min-height: calc(100vh - 80px);
   width: 50vw;
-  height: 100vh;
   margin: 0 auto 0 0;
   display: flex;
   justify-content: center;
@@ -266,48 +347,70 @@ h3 {
 }
 
 .artwork-detail-img {
+  box-shadow: 0px 0px 50px -10px #888888;
   max-width: 44vw;
-  max-height: 90vh;
+  max-height: 85vh;
 }
 
 .artwork-detail-text h3,
 h4,
 p {
+  width: 90%;
   text-align: left;
-  padding: 5px;
-  margin: 0 10%;
+  padding: 0 5px;
+  margin: 5px 0;
 }
 
 .artwork-detail-text h1,
 h2 {
+  width: 90%;
   text-align: left;
   color: rgb(44, 52, 70);
 }
 
+.like-liked {
+  width: 200px;
+  height: 50px;
+  border: 2px solid rgb(44, 52, 70);
+  background: none;
+  color: rgb(44, 52, 70);
+  font-size: 18px;
+  font-family: "Rubik", sans-serif;
+  transition: all 0.2s ease-in-out;
+}
+
+.like-liked:hover {
+  cursor: pointer;
+  background-color: rgb(44, 52, 70);
+  color: rgb(236, 235, 227);
+}
+
 .delete-icon,
 .delete-icon img {
-  width: 20px;
+  width: 30px;
   background-image: "/public/images/remove.png";
+  filter: saturate(0.8);
 }
 
 .delete-icon {
   position: relative;
-  bottom: 40px;
-  left: 20px;
+  bottom: 60px;
+  left: 30px;
 }
 
 .img-box img {
-  width: 90%;
+  width: 100%;
   height: 200px;
   object-fit: cover;
 }
 
 .img-box {
   margin: 50px 10%;
-  width: 90%;
+  width: 80%;
   height: 200px;
-  opacity: 0.7;
+  opacity: 0.5;
   transition: opacity 0.3s ease-in-out;
+  box-shadow: 0px 0px 20px -10px grey;
 }
 
 .img-box:hover {
@@ -315,6 +418,7 @@ h2 {
 }
 
 .img-box h1 {
+  color: white;
   display: inline-block;
   width: 60%;
   text-align: left;
@@ -323,12 +427,123 @@ h2 {
   margin: 20px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 900px) {
+  .image-box:hover .mini-title {
+    opacity: 1;
+    z-index: 999;
+  }
+
+  .image-box:hover .collection-image {
+    width: 96%;
+    height: auto;
+    padding: 2%;
+    filter: brightness(0.5);
+  }
+
+  .buttons {
+    position: relative;
+    bottom: 33vh;
+    width: 70vw;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 20px 0;
+  }
+
+  .dislike-button,
+  .like-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    outline: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .artwork-card img {
+    margin-top: 120px;
+    max-height: 70vh;
+    max-width: 70vw;
+  }
+}
+
+@media only screen and (max-width: 900px) {
   .collection {
     width: 100%;
   }
 
   .curator-card {
     width: 100%;
+  }
+
+  .artwork-detail-page {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .artwork-detail-text-block {
+    width: 100vw;
+    min-height: auto !important;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .artwork-detail-text {
+    width: 90vw;
+  }
+
+  .artwork-detail-img-block {
+    width: 100vw;
+    min-height: auto !important;
+    margin: 10px auto 38px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .artwork-detail-img {
+    box-shadow: 0px 0px 50px -10px #888888;
+    max-width: 90vw;
+  }
+
+  .spinner-card,
+  .artwork-card {
+    height: 70vh;
+    width: 90vw;
+    padding-bottom: 30px;
+  }
+
+  .artwork-card img {
+    max-height: 60vh;
+    max-width: 95vw;
+  }
+
+  .artwork-card h1 {
+    font-size: 24px;
+  }
+  .artwork-card h2 {
+    font-size: 20px;
+  }
+
+  .curator-card h2,
+  h3 {
+    width: 90vw;
+  }
+
+  .curator-card h1 {
+    width: 90vw;
+  }
+
+  .delete-icon {
+    position: relative;
+    bottom: 40px;
+    left: 20px;
   }
 }
