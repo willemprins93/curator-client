@@ -28,7 +28,6 @@ export default class User extends Component {
 
   render() {
     const { user } = this.state;
-    console.log(user);
     const sortedWorks = user.artworksLiked.reverse();
     return (
       <div className="collection">

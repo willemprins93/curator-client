@@ -57,29 +57,31 @@ class App extends React.Component {
     return (
       <div className="App">
         <BrowserRouter>
-          <nav>
-            <NavLink
-              activeClassName="is-active"
-              className="site-nav"
-              to="/mostlikedworks"
-            >
-              Most Liked
-            </NavLink>
-            <NavLink
-              activeClassName="is-active"
-              className="site-nav"
-              to="/curator"
-            >
-              Curator
-            </NavLink>
-            <NavLink
-              activeClassName="is-active"
-              className="site-nav"
-              to="/user"
-            >
-              My Collection
-            </NavLink>
-          </nav>
+          {authenticated && (
+            <nav>
+              <NavLink
+                activeClassName="is-active"
+                className="site-nav"
+                to="/mostlikedworks"
+              >
+                Most Liked
+              </NavLink>
+              <NavLink
+                activeClassName="is-active"
+                className="site-nav"
+                to="/curator"
+              >
+                Curator
+              </NavLink>
+              <NavLink
+                activeClassName="is-active"
+                className="site-nav"
+                to="/user"
+              >
+                My Collection
+              </NavLink>
+            </nav>
+          )}
           <Switch>
             <AnonRoute
               exact
