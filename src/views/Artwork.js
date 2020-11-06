@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getArtwork, likeArtwork } from "../services/curatorService";
+import { Link } from "react-router-dom";
 
 export default class Artwork extends Component {
   state = {
@@ -7,6 +8,7 @@ export default class Artwork extends Component {
     artworkId: this.props.match.params.id,
     artwork: {},
     usersLiked: [],
+    fullSizeToggle: "hidden",
   };
 
   componentDidMount = () => {
@@ -37,17 +39,35 @@ export default class Artwork extends Component {
       .catch((err) => console.log("Error found: ", err));
   };
 
+  toggleFullSize = (e) => {
+    e.preventDefault();
+    const view = this.state.fullSizeToggle === "hidden" ? "visible" : "hidden";
+    this.setState({
+      fullSizeToggle: view,
+    });
+  };
+
   render() {
-    const { artwork, usersLiked } = this.state;
+    const { artwork, usersLiked, fullSizeToggle } = this.state;
     console.log("THE ARTWORK: ", artwork);
     return (
       <div className="artwork-detail-page">
         <div className="artwork-detail-img-block">
-          <img
-            className="artwork-detail-img"
-            src={artwork.img}
-            alt={artwork.title}
-          />
+          <a href="#fullview" onClick={this.toggleFullSize}>
+            <img
+              className="artwork-detail-img"
+              src={artwork.img}
+              alt={artwork.title}
+            />
+          </a>
+          <a href="#fullview" onClick={this.toggleFullSize}>
+            <div className={`fullsize-wrapper ${fullSizeToggle}`}>
+              <div
+                className="fullsize-img"
+                style={{ backgroundImage: `url(${artwork.img})` }}
+              />
+            </div>
+          </a>
         </div>
         <div className="artwork-detail-text-block">
           <div className="artwork-detail-text">
@@ -68,12 +88,23 @@ export default class Artwork extends Component {
                 : "like"}
             </h2>
             {!usersLiked.includes(this.state.user._id) ? (
-              <button className="like-liked" onClick={this.likeArtwork}>
-                Like
+              <button className="like-button-small" onClick={this.likeArtwork}>
+                <img src="/images/heart.png" alt="like-button" />
               </button>
             ) : (
-              <h2>You like this</h2>
+              <img className="liked-icon" src="/images/heart.png" alt="heart" />
             )}
+            <Link
+              className="blue-button like"
+              to={{
+                pathname: `/${artwork.artworkId}/similar`,
+                state: {
+                  title: artwork.title,
+                },
+              }}
+            >
+              Similar artworks
+            </Link>
           </div>
         </div>
       </div>

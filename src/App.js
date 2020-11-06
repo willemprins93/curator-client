@@ -13,6 +13,7 @@ import Artwork from "./views/Artwork";
 import EditUser from "./views/EditUser";
 import EditCollection from "./views/EditCollection";
 import LikedWorks from "./views/LikedWorks";
+import SimilarWorks from "./views/SimilarWorks";
 
 class App extends React.Component {
   state = {
@@ -58,28 +59,34 @@ class App extends React.Component {
       <div className="App">
         <BrowserRouter>
           {authenticated && (
-            <nav>
-              <NavLink
-                activeClassName="is-active"
-                className="site-nav"
-                to="/mostlikedworks"
-              >
-                Most Liked
-              </NavLink>
-              <NavLink
-                activeClassName="is-active"
-                className="site-nav"
-                to="/curator"
-              >
-                Curator
-              </NavLink>
-              <NavLink
-                activeClassName="is-active"
-                className="site-nav"
-                to="/user"
-              >
-                My Collection
-              </NavLink>
+            <nav className="main-nav-bar">
+              <span className="site-nav-container">
+                <NavLink
+                  activeClassName="is-active"
+                  className="site-nav"
+                  to="/mostlikedworks"
+                >
+                  Most Liked
+                </NavLink>
+              </span>
+              <span className="site-nav-container">
+                <NavLink
+                  activeClassName="is-active"
+                  className="site-nav"
+                  to="/curator"
+                >
+                  Curator
+                </NavLink>
+              </span>
+              <span className="site-nav-container">
+                <NavLink
+                  activeClassName="is-active"
+                  className="site-nav"
+                  to="/user"
+                >
+                  My Collection
+                </NavLink>
+              </span>
             </nav>
           )}
           <Switch>
@@ -148,6 +155,14 @@ class App extends React.Component {
               authenticate={this.authenticate}
               user={this.state.user}
               component={LikedWorks}
+            />
+            <PrivateRoute
+              exact
+              path="/:id/similar"
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              user={this.state.user}
+              component={SimilarWorks}
             />
           </Switch>
         </BrowserRouter>

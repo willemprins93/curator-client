@@ -65,7 +65,7 @@ export default class EditCollection extends Component {
         <div className="image-list">
           {this.state.artworksLiked.map((artwork) => {
             return (
-              <div className="image-box">
+              <div className="image-box-edit">
                 <h1 className="mini-title">
                   {artwork.title}
                   <br />

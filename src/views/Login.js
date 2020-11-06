@@ -49,6 +49,7 @@ class Login extends React.Component {
             onChange={this.handleChange}
             required={true}
             type="email"
+            autoComplete="off"
           />
           <label>Password: </label>
           <input
@@ -57,6 +58,7 @@ class Login extends React.Component {
             value={password}
             onChange={this.handleChange}
             required={true}
+            autoComplete="off"
           />
           <button type="submit"> Login </button>
         </form>

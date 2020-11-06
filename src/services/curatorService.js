@@ -11,9 +11,17 @@ export const randomArtwork = (apiToken) => {
     .catch((err) => err);
 };
 
-export const addArtwork = ({ userId, artwork, artists, image }) => {
+export const similarArtworks = ({ apiToken, id }) => {
+  console.log("banana");
   return service
-    .post(`/artwork/add`, { userId, artwork, artists, image })
+    .get(`artwork/${apiToken}/${id}/similar`)
+    .then((response) => response.data)
+    .catch((err) => err);
+};
+
+export const addArtwork = ({ userId, apiToken, artwork, image }) => {
+  return service
+    .post(`/artwork/add`, { userId, apiToken, artwork, image })
     .then((response) => response.data)
     .catch((err) => err);
 };

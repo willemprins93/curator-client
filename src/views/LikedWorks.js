@@ -21,22 +21,29 @@ export default class LikedWorks extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.works.map((work) => {
+      <div className="most-liked-list">
+        {this.state.works.map((work, index) => {
           return (
-            <div key={work._id} className="img-box">
-              <Link to={`/artwork/${work._id}`}>
-                <div>
+            <div className="mostliked-listing">
+              <div>
+                <h1 id="rating">{index + 1}.</h1>
+              </div>
+              <div key={work._id} className="mostliked-image-box">
+                <Link className="most-liked-link" to={`/artwork/${work._id}`}>
                   <img src={work.img} alt={work.title} />
                   <h1>{work.title}</h1>
+                  <h4>
+                    <i>{work.artist}</i>
+                  </h4>
+                  <br />
                   <h1>
                     {work.usersLiked.length}{" "}
                     {work.usersLiked.length > 1 || work.usersLiked.length === 0
                       ? "likes"
                       : "like"}
                   </h1>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </div>
           );
         })}
