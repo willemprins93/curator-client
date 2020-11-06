@@ -815,6 +815,14 @@ h2 {
 }
 
 @media only screen and (max-width: 900px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  body {
+    position: relative;
+  }
+
   nav {
     width: 92%;
     height: 60px;
