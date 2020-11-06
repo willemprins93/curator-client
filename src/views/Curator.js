@@ -88,8 +88,7 @@ const Curator = (props) => {
   const likeArtwork = () => {
     const { artworkInfo, image } = artworks[0];
     setLoading(true);
-    const worksCopy = [...artworks];
-    worksCopy.shift();
+    const worksCopy = artworks.slice(1);
     setArtworks(worksCopy);
     setTimeout(() => {
       setLoading(false);
@@ -108,8 +107,7 @@ const Curator = (props) => {
 
   const dislikeArtwork = () => {
     setLoading(true);
-    const worksCopy = [...artworks];
-    worksCopy.shift();
+    const worksCopy = artworks.slice(1);
     setArtworks(worksCopy);
     setTimeout(() => {
       setLoading(false);
