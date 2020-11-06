@@ -546,7 +546,6 @@ h3 {
   text-align: right;
   font-size: 55px;
   line-height: 0.95em;
-  padding-right: 20px;
 }
 
 .analytics-heading {
@@ -554,7 +553,6 @@ h3 {
   width: 50%;
   text-align: left;
   margin: 10px;
-  padding-left: 19px;
 }
 
 .data-header {
@@ -965,6 +963,13 @@ h2 {
 }
 
 @media only screen and (max-width: 900px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  body {
+    position: relative;
+  }
   nav {
     width: 92%;
     height: 60px;
@@ -981,7 +986,7 @@ h2 {
     font-weight: 600;
   }
   .user-nav {
-    border: none;
+    border-top: 1px solid;
   }
   .collection {
     width: 100%;
@@ -993,9 +998,9 @@ h2 {
     opacity: 0;
   }
   .collection-heading {
-    width: 90vw;
-    padding: 0 10vw;
-    margin: 80px 0 0 0;
+    width: 85vw;
+    padding: 0 5vw;
+    margin-top: 80px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1016,10 +1021,10 @@ h2 {
     min-width: 50%;
     max-width: 50%;
     margin: 10px 0 !important;
-    padding-right: 15px;
     text-align: right;
     font-size: 32px !important;
     line-height: 1.1em;
+    padding-right: 20px;
   }
   .analytics-heading {
     border-left: 1px solid #636363;
@@ -1028,7 +1033,7 @@ h2 {
     max-width: 50%;
     text-align: left;
     margin: 10px 0 10px -1px;
-    padding: 0 0 0 14px;
+    padding-left: 19px;
   }
   .data-header {
     font-size: 16px;
@@ -1184,15 +1189,24 @@ h2 {
     bottom: 40px;
     left: 20px;
   }
+  #rating {
+    font-size: 60px;
+  }
+  .mostliked-listing {
+    width: 90vw;
+    margin: 20px 0 40px 0;
+  }
   .mostliked-image-box h1 {
-    margin: 0 0 0 20px;
+    text-align: end;
+    margin: -30px 0 0 80px;
     width: 60%;
     font-size: 18px;
     opacity: 1;
   }
   .mostliked-image-box h4 {
+    text-align: end;
     width: 60%;
-    margin: 0 0 20px 15px;
+    margin: 0 0 20px 75px;
     font-size: 16px;
     opacity: 1;
     z-index: 999;
