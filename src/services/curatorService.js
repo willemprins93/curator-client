@@ -4,6 +4,13 @@ const service = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL || "http://localhost:5000",
 });
 
+export const getMore = ({ apiToken, url }) => {
+  return service
+    .get(`/${apiToken}/${url}`)
+    .then((response) => response.data)
+    .catch((err) => err);
+};
+
 export const randomArtwork = (apiToken) => {
   return service
     .get(`/artwork/${apiToken}/random`)
@@ -12,9 +19,15 @@ export const randomArtwork = (apiToken) => {
 };
 
 export const similarArtworks = ({ apiToken, id }) => {
-  console.log("banana");
   return service
-    .get(`artwork/${apiToken}/${id}/similar`)
+    .get(`/artwork/${apiToken}/${id}/similar`)
+    .then((response) => response.data)
+    .catch((err) => err);
+};
+
+export const getArtistWorks = ({ apiToken, id }) => {
+  return service
+    .get(`/artwork/${apiToken}/artist/${id}`)
     .then((response) => response.data)
     .catch((err) => err);
 };
@@ -28,28 +41,21 @@ export const addArtwork = ({ userId, apiToken, artwork, image }) => {
 
 export const likeArtwork = ({ userId, artworkId }) => {
   return service
-    .post(`artwork/addliked`, { userId, artworkId })
+    .post(`/artwork/addliked`, { userId, artworkId })
     .then((response) => response.data)
     .catch((err) => err);
 };
 
 export const getArtwork = (id) => {
   return service
-    .get(`artwork/liked/${id}`)
-    .then((response) => response.data)
-    .catch((err) => err);
-};
-
-export const artworkDetails = (id) => {
-  return service
-    .get(`artwork/single/${id}`)
-    .then((response) => response.data)
+    .get(`/artwork/liked/${id}`)
+    .then((response) => response)
     .catch((err) => err);
 };
 
 export const editCollection = ({ userId, artworksLiked, artworksRemoved }) => {
   return service
-    .post("auth/user/editCollection", {
+    .post("/auth/user/editCollection", {
       userId,
       artworksLiked,
       artworksRemoved,
@@ -60,7 +66,7 @@ export const editCollection = ({ userId, artworksLiked, artworksRemoved }) => {
 
 export const getAllWorks = () => {
   return service
-    .get(`artwork/liked`)
+    .get(`/artwork/liked`)
     .then((response) => response.data)
     .catch((err) => err);
 };

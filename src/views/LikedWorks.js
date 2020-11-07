@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 
 export default class LikedWorks extends Component {
   state = {
-    works: [],
+    artworks: [],
   };
   componentDidMount = () => {
     getAllWorks()
-      .then((works) => {
-        const sorted = works.sort((a, b) => {
+      .then((artworks) => {
+        const sorted = artworks.sort((a, b) => {
           return b.usersLiked.length - a.usersLiked.length;
         });
         this.setState({
-          works: sorted,
+          artworks: sorted,
         });
       })
       .catch((err) => console.log(err));
@@ -22,23 +22,27 @@ export default class LikedWorks extends Component {
   render() {
     return (
       <div className="most-liked-list">
-        {this.state.works.map((work, index) => {
+        {this.state.artworks.map((artwork, index) => {
           return (
             <div className="mostliked-listing">
               <div>
                 <h1 id="rating">{index + 1}.</h1>
               </div>
-              <div key={work._id} className="mostliked-image-box">
-                <Link className="most-liked-link" to={`/artwork/${work._id}`}>
-                  <img src={work.img} alt={work.title} />
-                  <h1>{work.title}</h1>
+              <div key={artwork._id} className="mostliked-image-box">
+                <Link
+                  className="most-liked-link"
+                  to={`/artwork/${artwork._id}`}
+                >
+                  <img src={artwork.img} alt={artwork.title} />
+                  <h1>{artwork.title}</h1>
                   <h4>
-                    <i>{work.artist}</i>
+                    <i>{artwork.artist.name}</i>
                   </h4>
                   <br />
                   <h1>
-                    {work.usersLiked.length}{" "}
-                    {work.usersLiked.length > 1 || work.usersLiked.length === 0
+                    {artwork.usersLiked.length}{" "}
+                    {artwork.usersLiked.length > 1 ||
+                    artwork.usersLiked.length === 0
                       ? "likes"
                       : "like"}
                   </h1>

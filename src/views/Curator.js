@@ -49,15 +49,6 @@ const Curator = (props) => {
           setLoading(false);
         })
         .catch(console.error);
-      // Promise.all(threePromises)
-      //   .then((res) => {
-      //     //array of three promises
-      //     console.log(res);
-      //     setArtwork(res[0]);
-      //     setNext([res[1], res[2]]);
-      //     setLoading(false);
-      //   })
-      //   .catch(console.error);
     }
   }, [apiToken, artworks]);
 
@@ -160,7 +151,7 @@ const Curator = (props) => {
     <div className="curator-card">
       {artworks.length === 0 || isLoading ? (
         <div className="spinner-card">
-          <ReactLoading type={"spinningBubbles"} color={"#596b40"} />
+          <ReactLoading type={"spinningBubbles"} color={"#205586"} />
           <br />
           <p>
             <i>Loading random artworks...</i>

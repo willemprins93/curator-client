@@ -14,6 +14,7 @@ import EditUser from "./views/EditUser";
 import EditCollection from "./views/EditCollection";
 import LikedWorks from "./views/LikedWorks";
 import SimilarWorks from "./views/SimilarWorks";
+import ArtistWorks from "./views/ArtistWorks";
 
 class App extends React.Component {
   state = {
@@ -163,6 +164,14 @@ class App extends React.Component {
               authenticate={this.authenticate}
               user={this.state.user}
               component={SimilarWorks}
+            />
+            <PrivateRoute
+              exact
+              path="/artist/:id/"
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              user={this.state.user}
+              component={ArtistWorks}
             />
           </Switch>
         </BrowserRouter>

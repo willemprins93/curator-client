@@ -61,7 +61,7 @@ class SimilarWorks extends Component {
         </h2>
         {isLoading ? (
           <div className="spinner-card">
-            <ReactLoading type={"spin"} color={"#353831"} />
+            <ReactLoading type={"spinningBubbles"} color={"#205586"} />
             <br />
             <p>
               <i>Finding similar artworks...</i>

@@ -17,7 +17,6 @@ export default class Artwork extends Component {
         artwork: response,
         usersLiked: response.usersLiked,
       });
-      console.log("artwork from the database: ", response);
     });
   };
 
@@ -72,21 +71,21 @@ export default class Artwork extends Component {
         <div className="artwork-detail-text-block">
           <div className="artwork-detail-text">
             <h1>{artwork.title}</h1>
-            <h2>{artwork.artist}</h2>
-            <h3>{artwork.artistNationality}</h3>
+            <h2>{artwork.artist ? artwork.artist.name : "Artist unknown"}</h2>
+            <h3>{artwork.artist && artwork.artist.nationality}</h3>
             <h4>About the artist:</h4>
-            <p>{artwork.artistBio}</p>
+            <p>{artwork.artist ? artwork.artist.bio : "No bio"}</p>
             <h4>Medium:</h4>
             <p>{artwork.medium}</p>
             <h4>Date:</h4>
             <p>{artwork.date}</p>
             <h4>Held at:</h4> <p>{artwork.collectingInstitution}</p>
             <h2>
-              {usersLiked.length}{" "}
-              {usersLiked.length > 1 || usersLiked.length === 0
+              {artwork.usersLiked.length}{" "}
+              {artwork.usersLiked.length > 1 || usersLiked.length === 0
                 ? "likes"
                 : "like"}
-            </h2>
+            </h2>{" "}
             {!usersLiked.includes(this.state.user._id) ? (
               <button className="like-button-small" onClick={this.likeArtwork}>
                 <img src="/images/heart.png" alt="like-button" />
@@ -105,6 +104,19 @@ export default class Artwork extends Component {
             >
               Similar artworks
             </Link>
+            {artwork.artist && (
+              <Link
+                className="blue-button like"
+                to={{
+                  pathname: `/artist/${artwork.artist.artistId}`,
+                  state: {
+                    artist: artwork.artist.name,
+                  },
+                }}
+              >
+                More by this artist
+              </Link>
+            )}
           </div>
         </div>
       </div>

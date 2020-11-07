@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { getProfile, logout } from "../services/authService";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
@@ -35,14 +35,20 @@ const User = (props) => {
   const sortedWorks = [...user.artworksLiked].reverse();
   const favNationality = mode(
     user.artworksLiked
-      .map((artwork) => artwork.artistNationality)
+      .map(
+        (artwork) =>
+          (artwork.artist && artwork.artist.nationality) ||
+          "Nationality unknown"
+      )
       .filter((nationality) => nationality !== "Nationality unknown")
   );
   const favArtist = mode(
     user.artworksLiked
-      .map((artwork) => artwork.artist)
+      .map(
+        (artwork) => (artwork.artist && artwork.artist.name) || "Artist unknown"
+      )
       .filter(
-        (artist) => artist !== "Artist unknown" || artist !== "Artist Unknown"
+        (artist) => artist !== "Artist unknown" || artist !== "Artist unknown"
       )
   );
 
@@ -52,8 +58,6 @@ const User = (props) => {
       : [user.name.slice(0, 10) + "-", user.name.slice(10)];
 
   const isMobile = useMediaQuery({ query: "(max-width: 1200px)" });
-
-  console.log(username);
 
   return (
     <div className="collection">
@@ -111,7 +115,9 @@ const User = (props) => {
                   {artwork.title}
                   <br />
                   <h4>
-                    <i>{artwork.artist}</i>
+                    <i>
+                      {artwork.artist ? artwork.artist.name : "Artist unknown"}
+                    </i>
                   </h4>
                   <p>{artwork.date}</p>
                 </h1>

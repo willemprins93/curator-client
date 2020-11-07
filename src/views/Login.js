@@ -1,11 +1,13 @@
 import React from "react";
 import { login } from "../services/authService";
+import ReactLoading from "react-loading";
 
 class Login extends React.Component {
   state = {
     email: "",
     password: "",
     errorMessage: "",
+    isLoading: false,
   };
 
   handleChange = (event) => {
@@ -17,51 +19,74 @@ class Login extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    this.setState({ isLoading: true });
     login({
       email: this.state.email,
       password: this.state.password,
     })
-      .then((response) =>
-        response.accessToken
-          ? (localStorage.setItem("accessToken", response.accessToken),
-            localStorage.setItem("apiToken", response.apiToken),
-            this.props.authenticate(response.user),
-            this.props.history.push("/"))
-          : this.setState({
-              errorMessage: response.errorMessage,
-            })
+      .then(
+        (response) => (
+          this.setState({ isLoading: false }),
+          response.accessToken
+            ? (localStorage.setItem("accessToken", response.accessToken),
+              localStorage.setItem("apiToken", response.apiToken),
+              this.props.authenticate(response.user),
+              this.props.history.push("/"))
+            : this.setState({
+                errorMessage: response.errorMessage,
+              })
+        )
       )
       .catch((err) => {
+        this.setState({ isLoading: false });
+        console.log("in the error");
         console.log(err);
       });
   };
 
   render() {
-    const { email, password, errorMessage } = this.state;
+    const { email, password, errorMessage, isLoading } = this.state;
     return (
       <div className="form-page">
-        {errorMessage !== "" && errorMessage}
-        <form onSubmit={this.handleSubmit}>
-          <label>Email: </label>
-          <input
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-            required={true}
-            type="email"
-            autoComplete="off"
-          />
-          <label>Password: </label>
-          <input
-            name="password"
-            type="password"
-            value={password}
-            onChange={this.handleChange}
-            required={true}
-            autoComplete="off"
-          />
-          <button type="submit"> Login </button>
-        </form>
+        {isLoading ? (
+          <div className="spinner-card">
+            <ReactLoading type={"spinningBubbles"} color={"#205586"} />
+            <br />
+            <p>
+              <i>Logging in...</i>
+            </p>
+            <br />
+          </div>
+        ) : (
+          <>
+            <form onSubmit={this.handleSubmit}>
+              <label>Email: </label>
+              <input
+                name="email"
+                value={email}
+                onChange={this.handleChange}
+                required={true}
+                type="email"
+                autoComplete="off"
+              />
+              <label>Password: </label>
+              <input
+                name="password"
+                type="password"
+                value={password}
+                onChange={this.handleChange}
+                required={true}
+                autoComplete="off"
+              />
+              <button type="submit"> Login </button>
+            </form>
+            {errorMessage !== "" && (
+              <h4 className="error-message">
+                <i>{errorMessage}</i>
+              </h4>
+            )}
+          </>
+        )}
       </div>
     );
   }
