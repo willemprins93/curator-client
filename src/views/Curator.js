@@ -12,7 +12,7 @@ const Curator = (props) => {
   const [apiToken, setApiToken] = useState("");
 
   const getRandom = () => {
-    return randomArtwork(localStorage.getItem("apiToken"));
+    return randomArtwork(apiToken);
   };
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Curator = (props) => {
   }, []);
 
   useEffect(() => {
-    if (apiToken && isMounted) {
+    if (apiToken && artworks.length === 0 && isMounted) {
       const fourPromises = [1, 1, 1, 1].map(() => getRandom());
       fourPromises[0]
         .then((res) => {
@@ -69,7 +69,7 @@ const Curator = (props) => {
   }, [apiToken, artworks]);
 
   useEffect(() => {
-    if (artworks.length < 10 && isMounted) {
+    if (artworks.length < 10 && artworks.length !== 0 && isMounted) {
       const threePromises = [1, 1, 1].map(() => getRandom());
       threePromises[0]
         .then((res) => {
@@ -109,30 +109,28 @@ const Curator = (props) => {
   const likeArtwork = () => {
     const { artworkInfo, image } = artworks[0];
     setLoading(true);
-    setArtworks(...artworks.slice(1));
-    if (artworks.length) {
-      setTimeout(() => {
-        setLoading(false);
-      }, 1200);
-    }
+    setArtworks(artworks.slice(1));
+    setTimeout(() => {
+      setLoading(false);
+    }, 1200);
     addArtwork({
       userId,
       apiToken,
       artwork: artworkInfo,
       image,
     })
-      .then(() => {})
+      .then((res) => {
+        console.log(res);
+      })
       .catch(console.error);
   };
 
   const dislikeArtwork = () => {
     setLoading(true);
-    setArtworks(...artworks.slice(1));
-    if (artworks.length) {
-      setTimeout(() => {
-        setLoading(false);
-      }, 1200);
-    }
+    setArtworks(artworks.slice(1));
+    setTimeout(() => {
+      setLoading(false);
+    }, 1200);
   };
 
   return (
