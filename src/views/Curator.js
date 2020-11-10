@@ -12,7 +12,7 @@ const Curator = (props) => {
   const [apiToken, setApiToken] = useState("");
 
   const getRandom = () => {
-    return randomArtwork(apiToken);
+    return randomArtwork(localStorage.getItem("apiToken"));
   };
 
   useEffect(() => {
