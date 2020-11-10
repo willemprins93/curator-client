@@ -110,27 +110,29 @@ const Curator = (props) => {
     const { artworkInfo, image } = artworks[0];
     setLoading(true);
     setArtworks(...artworks.slice(1));
-    setTimeout(() => {
-      setLoading(false);
-    }, 1200);
+    if (artworks.length) {
+      setTimeout(() => {
+        setLoading(false);
+      }, 1200);
+    }
     addArtwork({
       userId,
       apiToken,
       artwork: artworkInfo,
       image,
     })
-      .then((res) => {
-        console.log(res);
-      })
+      .then(() => {})
       .catch(console.error);
   };
 
   const dislikeArtwork = () => {
     setLoading(true);
     setArtworks(...artworks.slice(1));
-    setTimeout(() => {
-      setLoading(false);
-    }, 1200);
+    if (artworks.length) {
+      setTimeout(() => {
+        setLoading(false);
+      }, 1200);
+    }
   };
 
   return (
