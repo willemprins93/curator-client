@@ -17,8 +17,9 @@ class SimilarWorks extends Component {
     const apiToken = localStorage.getItem("apiToken");
     similarArtworks({ apiToken, id })
       .then((data) => {
+        console.log("THE DATA", data);
         this.setState({
-          artworks: data.artworks,
+          artworks: data._embedded.artworks,
           isLoading: false,
         });
         getProfile(this.props.user).then((response) => {

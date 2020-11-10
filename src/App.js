@@ -15,6 +15,7 @@ import EditCollection from "./views/EditCollection";
 import LikedWorks from "./views/LikedWorks";
 import SimilarWorks from "./views/SimilarWorks";
 import ArtistWorks from "./views/ArtistWorks";
+// import Search from "./views/Search";
 
 class App extends React.Component {
   state = {
@@ -79,6 +80,15 @@ class App extends React.Component {
                   Curator
                 </NavLink>
               </span>
+              {/* <span className="site-nav-container">
+                <NavLink
+                  activeClassName="is-active"
+                  className="site-nav"
+                  to="/search"
+                >
+                  Search
+                </NavLink>
+              </span> */}
               <span className="site-nav-container">
                 <NavLink
                   activeClassName="is-active"
@@ -91,26 +101,6 @@ class App extends React.Component {
             </nav>
           )}
           <Switch>
-            <AnonRoute
-              exact
-              path="/"
-              authenticated={authenticated}
-              component={Home}
-            />
-            <AnonRoute
-              exact
-              path="/login"
-              authenticated={authenticated}
-              authenticate={this.authenticate}
-              component={Login}
-            />
-            <AnonRoute
-              exact
-              path="/signup"
-              authenticated={authenticated}
-              authenticate={this.authenticate}
-              component={Signup}
-            />
             <PrivateRoute
               exact
               path="/curator"
@@ -172,6 +162,34 @@ class App extends React.Component {
               authenticate={this.authenticate}
               user={this.state.user}
               component={ArtistWorks}
+            />
+            {/* <PrivateRoute
+              exact
+              path="/search/"
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              user={this.state.user}
+              component={Search}
+            /> */}
+            <AnonRoute
+              exact
+              path="/"
+              authenticated={authenticated}
+              component={Home}
+            />
+            <AnonRoute
+              exact
+              path="/login"
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              component={Login}
+            />
+            <AnonRoute
+              exact
+              path="/signup"
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              component={Signup}
             />
           </Switch>
         </BrowserRouter>

@@ -70,7 +70,7 @@ export default class EditCollection extends Component {
                   {artwork.title}
                   <br />
                   <h4>
-                    <i>{artwork.artist}</i>
+                    <i>{artwork.artist.name}</i>
                   </h4>
                 </h1>
                 <img

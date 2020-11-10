@@ -4,18 +4,31 @@ const service = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL || "http://localhost:5000",
 });
 
-export const getMore = ({ apiToken, url }) => {
+export const searchArt = ({ apiToken, query }) => {
+  console.log("query? ", query);
   return service
-    .get(`/${apiToken}/${url}`)
-    .then((response) => response.data)
-    .catch((err) => err);
+    .get(`/artwork/${apiToken}/search/${query}`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => err.response);
+};
+
+export const getArtwork = (id) => {
+  console.log("trying to get artwork with id: ", id);
+  return service
+    .get(`/artwork/liked/${id}`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => err.response);
 };
 
 export const randomArtwork = (apiToken) => {
   return service
     .get(`/artwork/${apiToken}/random`)
     .then((response) => response.data)
-    .catch((err) => err);
+    .catch((err) => err.response);
 };
 
 export const similarArtworks = ({ apiToken, id }) => {
@@ -32,6 +45,13 @@ export const getArtistWorks = ({ apiToken, id }) => {
     .catch((err) => err);
 };
 
+export const getMore = ({ apiToken, url }) => {
+  return service
+    .post(`/artwork/${apiToken}/more`, { url })
+    .then((response) => response.data)
+    .catch((err) => err);
+};
+
 export const addArtwork = ({ userId, apiToken, artwork, image }) => {
   return service
     .post(`/artwork/add`, { userId, apiToken, artwork, image })
@@ -43,13 +63,6 @@ export const likeArtwork = ({ userId, artworkId }) => {
   return service
     .post(`/artwork/addliked`, { userId, artworkId })
     .then((response) => response.data)
-    .catch((err) => err);
-};
-
-export const getArtwork = (id) => {
-  return service
-    .get(`/artwork/liked/${id}`)
-    .then((response) => response)
     .catch((err) => err);
 };
 

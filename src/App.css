@@ -19,10 +19,23 @@ body {
   width: 50%;
 }
 
+.main-logo {
+  letter-spacing: 5px;
+  padding: 0;
+  margin: 0;
+  font-weight: 800;
+  font-size: 160px;
+  background-clip: text !important;
+  color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  background-position: center center !important;
+}
+
 #subtitle {
   letter-spacing: 0.02em;
   text-shadow: 0px 0px 8px lightgrey;
-  margin: 20px;
+  margin: 0 0 20px 0;
   font-size: 20px;
   font-weight: 300;
   color: #383838;
@@ -93,6 +106,25 @@ p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.search-page {
+  min-height: calc(100vh - 180px);
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 180px;
 }
 
 .error-message {
@@ -527,6 +559,21 @@ h3 {
           box-shadow: 0px 0px 50px -10px #888888;
 }
 
+.next-banner {
+  width: 100%;
+  height: 80px;
+  margin-bottom: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .collection {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -681,7 +728,8 @@ h3 {
 }
 
 .artwork-detail-text {
-  padding: 0 0 50px 10px;
+  width: 100%;
+  padding: 0 0 50px 50px;
 }
 
 .artwork-detail-text-block {
@@ -786,6 +834,22 @@ h2 {
 
 .artwork-detail-text h1 {
   margin: 0 0 10px 0;
+}
+
+.button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .blue-button {
@@ -1005,8 +1069,16 @@ h2 {
   body {
     position: relative;
   }
-  #logo {
-    width: 95%;
+  .main-logo {
+    letter-spacing: 2px;
+    margin-top: 20%;
+    font-weight: 800;
+    font-size: 70px;
+  }
+  #subtitle {
+    letter-spacing: 0.02em;
+    margin: 10px 0 20px 0;
+    font-size: 17px;
   }
   nav {
     width: 92%;
@@ -1205,6 +1277,21 @@ h2 {
     height: 96vh;
     top: 2vh;
     left: 2vw;
+  }
+  .button-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .spinner-card {
     padding-bottom: 40px;

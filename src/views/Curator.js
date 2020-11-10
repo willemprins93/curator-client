@@ -5,6 +5,7 @@ import ReactLoading from "react-loading";
 
 const Curator = (props) => {
   const [isLoading, setLoading] = useState(true);
+  const [isMounted, setMount] = useState(true);
   const userId = props.user._id;
 
   const [artworks, setArtworks] = useState([]);
@@ -19,61 +20,90 @@ const Curator = (props) => {
   }, []);
 
   useEffect(() => {
-    if (apiToken && artworks.length === 0) {
+    if (apiToken && artworks.length === 0 && isMounted) {
       const fourPromises = [1, 1, 1, 1].map(() => getRandom());
       fourPromises[0]
         .then((res) => {
-          console.log("1");
-          setArtworks((a) => [...a, res]);
-          setLoading(false);
+          if (isMounted) {
+            console.log("RESULTT", res);
+
+            setArtworks((a) => [...a, res]);
+            setLoading(false);
+          }
         })
         .catch(console.error);
       fourPromises[1]
         .then((res) => {
-          console.log("2");
-          setArtworks((a) => [...a, res]);
-          setLoading(false);
+          console.log("RESULTT", res);
+
+          if (isMounted) {
+            setArtworks((a) => [...a, res]);
+            setLoading(false);
+          }
         })
         .catch(console.error);
       fourPromises[2]
         .then((res) => {
-          console.log("3");
-          setArtworks((a) => [...a, res]);
-          setLoading(false);
+          console.log("RESULTT", res);
+
+          if (isMounted) {
+            setArtworks((a) => [...a, res]);
+            setLoading(false);
+          }
         })
         .catch(console.error);
       fourPromises[3]
         .then((res) => {
-          console.log("3");
-          setArtworks((a) => [...a, res]);
-          setLoading(false);
+          console.log("RESULTT", res);
+
+          if (isMounted) {
+            setArtworks((a) => [...a, res]);
+            setLoading(false);
+          }
         })
         .catch(console.error);
     }
+    return () => {
+      setMount(false);
+    };
   }, [apiToken, artworks]);
 
   useEffect(() => {
-    if (artworks.length < 10 && artworks.length !== 0) {
+    if (artworks.length < 10 && artworks.length !== 0 && isMounted) {
       const threePromises = [1, 1, 1].map(() => getRandom());
       threePromises[0]
         .then((res) => {
-          setArtworks((a) => [...a, res]);
-          setLoading(false);
+          console.log("RESULTT", res);
+          if (isMounted) {
+            setArtworks((a) => [...a, res]);
+            setLoading(false);
+          }
         })
         .catch(console.error);
       threePromises[1]
         .then((res) => {
-          setArtworks((a) => [...a, res]);
-          setLoading(false);
+          console.log("RESULTT", res);
+
+          if (isMounted) {
+            setArtworks((a) => [...a, res]);
+            setLoading(false);
+          }
         })
         .catch(console.error);
       threePromises[2]
         .then((res) => {
-          setArtworks((a) => [...a, res]);
-          setLoading(false);
+          if (isMounted) {
+            console.log("RESULTT", res);
+
+            setArtworks((a) => [...a, res]);
+            setLoading(false);
+          }
         })
         .catch(console.error);
     }
+    return () => {
+      setMount(false);
+    };
   }, [artworks]);
 
   const likeArtwork = () => {
@@ -102,50 +132,6 @@ const Curator = (props) => {
       setLoading(false);
     }, 1200);
   };
-
-  // return <></>;
-
-  // likeArtwork = () => {
-  //   this.setState({
-  //     isLoading: true,
-  //   });
-  //   const { artwork, image, user } = this.state;
-  //   const apiToken = localStorage.getItem("apiToken");
-  //   addArtwork({ userId: user._id, apiToken, artwork, image })
-  //     .then((response) => {
-  //       console.log("Success!!", response);
-  //       const apiToken = localStorage.getItem("apiToken");
-  //       randomArtwork(apiToken).then((response) => {
-  //         const { artworkInfo, image } = response;
-  //         this.setState({
-  //           isLoading: false,
-  //           artwork: artworkInfo,
-  //           image,
-  //         });
-  //       });
-  //     })
-  //     .catch((err) => console.log("Error found: ", err));
-  // };
-
-  // dislikeArtwork = () => {
-  //   this.setState({
-  //     isLoading: true,
-  //   });
-  //   const apiToken = localStorage.getItem("apiToken");
-  //   randomArtwork(apiToken)
-  //     .then((response) => {
-  //       const { artworkInfo, image } = response;
-  //       this.setState({
-  //         isLoading: false,
-  //         artwork: artworkInfo,
-  //         image,
-  //       });
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
-  // const { title, date, id } = artwork.artworkInfo;
-  // const { image } = artwork.image;
 
   return (
     <div className="curator-card">
@@ -185,6 +171,23 @@ const Curator = (props) => {
           >
             Similar artworks
           </Link>
+          {/* {artworks[0].artworkInfo._links.artists.href && (
+            <Link
+              className="blue-button like"
+              to={{
+                pathname: `/artist/${
+                  artworks[0].artworkInfo._links.artists.href.split(
+                    "artwork_id="
+                  )[1]
+                }`,
+                state: {
+                  artistLink: artworks[0].artworkInfo._links.artists.href,
+                },
+              }}
+            >
+              More by this artist
+            </Link>
+          )} */}
         </div>
       )}
       <div className="buttons">

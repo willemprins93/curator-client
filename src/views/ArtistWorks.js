@@ -1,15 +1,21 @@
 import React, { Component } from "react";
-import { addArtwork, getArtistWorks } from "../services/curatorService";
+import {
+  addArtwork,
+  getArtistWorks,
+  getMore,
+} from "../services/curatorService";
 import { getProfile } from "../services/authService";
 import ReactLoading from "react-loading";
 import { Link } from "react-router-dom";
 
 class SimilarWorks extends Component {
   state = {
+    apiToken: "",
     artist: this.props.location.state.artist,
     user: this.props.user,
     id: this.props.match.params.id,
     artworks: [],
+    nextWorksLink: "",
     isLoading: true,
   };
 
@@ -20,7 +26,9 @@ class SimilarWorks extends Component {
       .then((data) => {
         console.log("RETRIEVED: ", data);
         this.setState({
+          apiToken,
           artworks: data._embedded.artworks,
+          nextWorksLink: data._links.next.href || "",
           isLoading: false,
         });
         getProfile(this.props.user).then((response) => {
@@ -47,8 +55,23 @@ class SimilarWorks extends Component {
       .catch((err) => console.log("error found: ", err));
   };
 
+  getNextWorks = (e) => {
+    e.preventDefault();
+    const { apiToken, nextWorksLink } = this.state;
+    getMore({ apiToken, url: nextWorksLink })
+      .then((data) => {
+        console.log(data);
+        const worksArr = [...this.state.artworks, ...data._embedded.artworks];
+        this.setState({
+          artworks: worksArr,
+          nextWorksLink: data._links.next.href || "",
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+
   render() {
-    const { artist, user, artworks, isLoading } = this.state;
+    const { artist, user, artworks, nextWorksLink, isLoading } = this.state;
     const likedIds = user.artworksLiked.map((artwork) => {
       return artwork.artworkId;
     });
@@ -125,6 +148,17 @@ class SimilarWorks extends Component {
                 </div>
               );
             })}
+            {nextWorksLink !== " " && (
+              <div className="next-banner">
+                <a
+                  className="blue-button"
+                  href="next works"
+                  onClick={this.getNextWorks}
+                >
+                  See more
+                </a>
+              </div>
+            )}
           </div>
         )}
       </div>
