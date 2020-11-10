@@ -20,7 +20,7 @@ const Curator = (props) => {
   }, []);
 
   useEffect(() => {
-    if (apiToken && artworks.length === 0 && isMounted) {
+    if (apiToken && isMounted) {
       const fourPromises = [1, 1, 1, 1].map(() => getRandom());
       fourPromises[0]
         .then((res) => {
@@ -69,7 +69,7 @@ const Curator = (props) => {
   }, [apiToken, artworks]);
 
   useEffect(() => {
-    if (artworks.length < 10 && artworks.length !== 0 && isMounted) {
+    if (artworks.length < 10 && isMounted) {
       const threePromises = [1, 1, 1].map(() => getRandom());
       threePromises[0]
         .then((res) => {
