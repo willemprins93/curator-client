@@ -82,14 +82,7 @@ class SimilarWorks extends Component {
   };
 
   render() {
-    const {
-      artist,
-      user,
-      artworks,
-      nextWorksLink,
-      isLoading,
-      loadingLikeId,
-    } = this.state;
+    const { artist, user, artworks, nextWorksLink, isLoading } = this.state;
     const likedIds = user.artworksLiked.map((artwork) => {
       return artwork.artworkId;
     });

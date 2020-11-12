@@ -55,10 +55,10 @@ const Curator = (props) => {
         })
         .catch(console.error);
     }
-    // return () => {
-    //   setMount(false);
-    // };
-  }, [apiToken, artworks]);
+    return () => {
+      setMount(false);
+    };
+  }, [apiToken, artworks, isMounted]);
 
   useEffect(() => {
     if (artworks.length < 10 && artworks.length !== 0 && isMounted) {
@@ -91,7 +91,7 @@ const Curator = (props) => {
     return () => {
       setMount(false);
     };
-  }, [artworks]);
+  }, [artworks, isMounted]);
 
   const likeArtwork = function () {
     const { artworkInfo, image } = artworks[0];

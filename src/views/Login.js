@@ -1,6 +1,7 @@
 import React from "react";
 import { login } from "../services/authService";
 import ReactLoading from "react-loading";
+import { Link } from "react-router-dom";
 
 class Login extends React.Component {
   state = {
@@ -78,8 +79,16 @@ class Login extends React.Component {
                 required={true}
                 autoComplete="off"
               />
-              <button type="submit"> Login </button>
+              <button type="submit"> Log In </button>
             </form>
+            <div className="auth-mini-nav">
+              <Link className="auth-nav" to="/">
+                {"Home"}
+              </Link>
+              <Link className="auth-nav" to="/signup">
+                {"Sign Up"}
+              </Link>
+            </div>
             {errorMessage !== "" && (
               <h4 className="error-message">
                 <i>{errorMessage}</i>

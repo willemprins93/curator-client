@@ -92,7 +92,11 @@ export default class Artwork extends Component {
                 </h2>
                 <h3>{artwork.artist && artwork.artist.nationality}</h3>
                 <h4>About the artist:</h4>
-                <p>{artwork.artist ? artwork.artist.bio : "No bio"}</p>
+                <p>
+                  {artwork.artist && artwork.artist.bio
+                    ? artwork.artist.bio
+                    : "No further information"}
+                </p>
                 <h4>Medium:</h4>
                 <p>{artwork.medium}</p>
                 <h4>Date:</h4>

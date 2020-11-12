@@ -1,9 +1,12 @@
 import React from "react";
 import { BrowserRouter, Switch, NavLink } from "react-router-dom";
 import "./App.css";
+import ReactLoading from "react-loading";
+
 import AnonRoute from "./components/auth/AnonRoute";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import { validateSession, logout } from "./services/authService";
+
 import Home from "./views/Home";
 import Login from "./views/Login";
 import Signup from "./views/Signup";
@@ -21,6 +24,7 @@ class App extends React.Component {
   state = {
     authenticated: false,
     user: {},
+    isLoading: true,
   };
 
   componentDidMount = () => {
@@ -32,6 +36,10 @@ class App extends React.Component {
           this.authenticate(response.session.userId);
         })
         .catch((err) => console.log(err));
+    } else {
+      this.setState({
+        isLoading: false,
+      });
     }
   };
 
@@ -39,6 +47,7 @@ class App extends React.Component {
     this.setState({
       authenticated: true,
       user,
+      isLoading: false,
     });
   };
 
@@ -56,7 +65,22 @@ class App extends React.Component {
   };
 
   render() {
-    const { authenticated } = this.state;
+    const { authenticated, isLoading } = this.state;
+
+    if (isLoading) {
+      return (
+        <div className="loading-page">
+          <div className="spinner-card">
+            <ReactLoading type={"spinningBubbles"} color={"#205586"} />
+            <br />
+            <p>
+              <i>Please wait...</i>
+            </p>
+            <br />
+          </div>
+        </div>
+      );
+    }
     return (
       <div className="App">
         <BrowserRouter>

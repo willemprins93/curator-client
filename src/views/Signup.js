@@ -1,6 +1,7 @@
 import React from "react";
 import { signup } from "../services/authService";
 import ReactLoading from "react-loading";
+import { Link } from "react-router-dom";
 
 class Signup extends React.Component {
   state = {
@@ -93,8 +94,16 @@ class Signup extends React.Component {
                 onChange={this.handleChange}
                 required={true}
               />
-              <button type="submit"> Sign up </button>
+              <button type="submit"> Sign Up </button>
             </form>
+            <div className="auth-mini-nav">
+              <Link className="auth-nav" to="/">
+                {"Home"}
+              </Link>
+              <Link className="auth-nav" to="/login">
+                {"Log In"}
+              </Link>
+            </div>
             {errorMessage !== "" && (
               <h4 className="error-message">
                 <i>{errorMessage}</i>
