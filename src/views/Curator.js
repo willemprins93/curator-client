@@ -55,9 +55,9 @@ const Curator = (props) => {
         })
         .catch(console.error);
     }
-    return () => {
-      setMount(false);
-    };
+    // return () => {
+    //   setMount(false);
+    // };
   }, [apiToken, artworks]);
 
   useEffect(() => {
