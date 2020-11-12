@@ -55,10 +55,10 @@ export default class EditCollection extends Component {
       <div className="collection">
         <h1>Edit Collection</h1>
         <nav>
-          <Link className="site-nav danger" to="/user">
+          <Link className="user-nav danger" to="/user">
             Cancel
           </Link>
-          <Link className="site-nav success" onClick={this.saveCollection}>
+          <Link className="user-nav success" onClick={this.saveCollection}>
             Save Changes
           </Link>
         </nav>
