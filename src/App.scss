@@ -5,7 +5,7 @@
   align-items: center;
 }
 
-$offWhiteMain: rgb(236, 235, 227);
+$offWhiteMain: #ecebe3;
 // $accentMain: #98a060;
 $accentMain: #205586;
 // $accentMain: #5f642a;
@@ -306,6 +306,7 @@ nav {
 
 .dislike-button:hover img,
 .like-button:hover img {
+  cursor: pointer;
   width: 50px;
 }
 
@@ -1165,6 +1166,7 @@ h2 {
   }
 
   .like-button-small:hover img {
+    cursor: pointer;
     width: none;
   }
 

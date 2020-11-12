@@ -24,11 +24,17 @@ class SimilarWorks extends Component {
     const apiToken = localStorage.getItem("apiToken");
     getArtistWorks({ apiToken, id })
       .then((data) => {
-        console.log("RETRIEVED: ", data);
+        console.log(data);
+        let link;
+        if (data._links.next) {
+          link = data._links.next.href;
+        } else {
+          link = "";
+        }
         this.setState({
           apiToken,
           artworks: data._embedded.artworks,
-          nextWorksLink: data._links.next.href || "",
+          nextWorksLink: link,
           isLoading: false,
         });
         getProfile(this.props.user).then((response) => {
@@ -41,8 +47,7 @@ class SimilarWorks extends Component {
   };
 
   likeArtwork = (artwork, image) => {
-    const { user } = this.state;
-    const apiToken = localStorage.getItem("apiToken");
+    const { user, apiToken } = this.state;
     addArtwork({ userId: user._id, apiToken, artwork, image })
       .then((response) => {
         const updatedUser = response.updatedUser;
@@ -62,16 +67,29 @@ class SimilarWorks extends Component {
       .then((data) => {
         console.log(data);
         const worksArr = [...this.state.artworks, ...data._embedded.artworks];
+        let link;
+        if (data._links.next) {
+          link = data._links.next.href;
+        } else {
+          link = "";
+        }
         this.setState({
           artworks: worksArr,
-          nextWorksLink: data._links.next.href || "",
+          nextWorksLink: link,
         });
       })
       .catch((err) => console.log(err));
   };
 
   render() {
-    const { artist, user, artworks, nextWorksLink, isLoading } = this.state;
+    const {
+      artist,
+      user,
+      artworks,
+      nextWorksLink,
+      isLoading,
+      loadingLikeId,
+    } = this.state;
     const likedIds = user.artworksLiked.map((artwork) => {
       return artwork.artworkId;
     });
@@ -148,7 +166,7 @@ class SimilarWorks extends Component {
                 </div>
               );
             })}
-            {nextWorksLink !== " " && (
+            {(nextWorksLink !== "" || nextWorksLink !== undefined) && (
               <div className="next-banner">
                 <a
                   className="blue-button"

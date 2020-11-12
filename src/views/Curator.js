@@ -25,8 +25,6 @@ const Curator = (props) => {
       fourPromises[0]
         .then((res) => {
           if (isMounted) {
-            console.log("RESULTT", res);
-
             setArtworks((a) => [...a, res]);
             setLoading(false);
           }
@@ -34,8 +32,6 @@ const Curator = (props) => {
         .catch(console.error);
       fourPromises[1]
         .then((res) => {
-          console.log("RESULTT", res);
-
           if (isMounted) {
             setArtworks((a) => [...a, res]);
             setLoading(false);
@@ -44,8 +40,6 @@ const Curator = (props) => {
         .catch(console.error);
       fourPromises[2]
         .then((res) => {
-          console.log("RESULTT", res);
-
           if (isMounted) {
             setArtworks((a) => [...a, res]);
             setLoading(false);
@@ -54,8 +48,6 @@ const Curator = (props) => {
         .catch(console.error);
       fourPromises[3]
         .then((res) => {
-          console.log("RESULTT", res);
-
           if (isMounted) {
             setArtworks((a) => [...a, res]);
             setLoading(false);
@@ -73,7 +65,6 @@ const Curator = (props) => {
       const threePromises = [1, 1, 1].map(() => getRandom());
       threePromises[0]
         .then((res) => {
-          console.log("RESULTT", res);
           if (isMounted) {
             setArtworks((a) => [...a, res]);
             setLoading(false);
@@ -82,8 +73,6 @@ const Curator = (props) => {
         .catch(console.error);
       threePromises[1]
         .then((res) => {
-          console.log("RESULTT", res);
-
           if (isMounted) {
             setArtworks((a) => [...a, res]);
             setLoading(false);
@@ -93,8 +82,6 @@ const Curator = (props) => {
       threePromises[2]
         .then((res) => {
           if (isMounted) {
-            console.log("RESULTT", res);
-
             setArtworks((a) => [...a, res]);
             setLoading(false);
           }
@@ -106,10 +93,10 @@ const Curator = (props) => {
     };
   }, [artworks]);
 
-  const likeArtwork = () => {
+  const likeArtwork = function () {
     const { artworkInfo, image } = artworks[0];
     setLoading(true);
-    setArtworks(artworks.slice(1));
+    setArtworks([...artworks].slice(1));
     setTimeout(() => {
       setLoading(false);
     }, 1200);
@@ -125,9 +112,9 @@ const Curator = (props) => {
       .catch(console.error);
   };
 
-  const dislikeArtwork = () => {
+  const dislikeArtwork = function () {
     setLoading(true);
-    setArtworks(artworks.slice(1));
+    setArtworks([...artworks].slice(1));
     setTimeout(() => {
       setLoading(false);
     }, 1200);
