@@ -302,8 +302,19 @@ nav {
   border-color: $accentSecond;
 }
 
+.danger:hover {
+  background-color: $accentSecond;
+  color: $offWhiteMain;
+}
+
 .success {
   color: darkolivegreen;
+  border-color: darkolivegreen;
+}
+
+.success:hover {
+  background-color: darkolivegreen;
+  color: $offWhiteMain;
 }
 
 .buttons {

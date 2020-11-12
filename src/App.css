@@ -356,8 +356,19 @@ nav {
   border-color: #901c14;
 }
 
+.danger:hover {
+  background-color: #901c14;
+  color: #ecebe3;
+}
+
 .success {
   color: darkolivegreen;
+  border-color: darkolivegreen;
+}
+
+.success:hover {
+  background-color: darkolivegreen;
+  color: #ecebe3;
 }
 
 .buttons {
