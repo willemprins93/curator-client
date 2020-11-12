@@ -147,7 +147,7 @@ p {
 
 .auth-mini-nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 220px;
   margin-top: 30px;
@@ -155,7 +155,7 @@ p {
 
 .auth-nav {
   width: 40%;
-  margin: 0 5%;
+  margin: 0;
   text-decoration: none;
   color: $accentMain;
   font-weight: 600;

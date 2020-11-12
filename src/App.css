@@ -181,9 +181,9 @@ p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -193,7 +193,7 @@ p {
 
 .auth-nav {
   width: 40%;
-  margin: 0 5%;
+  margin: 0;
   text-decoration: none;
   color: #205586;
   font-weight: 600;
