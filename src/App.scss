@@ -154,14 +154,14 @@ p {
 }
 
 .auth-nav {
-  width: 40%;
+  width: 44%;
   margin: 0;
   text-decoration: none;
   color: $accentMain;
   font-weight: 600;
   font-size: 14px;
   text-align: center;
-  padding: 10px 17px;
+  padding: 10px 0;
   border-top: 1px solid $accentMain;
   font-family: "Rubik", sans-serif;
   transition: all 0.2s ease-in-out;
@@ -215,7 +215,7 @@ form button {
   font-size: 16px;
   font-weight: 800;
   background-color: rgba(0, 0, 0, 0);
-  border: 2px solid $accentMain;
+  border: 1px solid $accentMain;
   color: $accentMain;
   transition: all 0.2s ease-in-out;
 }
@@ -242,6 +242,8 @@ nav {
   width: 100%;
   justify-content: space-evenly;
   background-color: $offWhiteMain;
+  box-shadow: 0px 0px 30px -10px grey;
+
   // background-image: linear-gradient(
   //   $offWhiteMain,
   //   $offWhiteMain,
@@ -758,7 +760,7 @@ h2 {
   display: block;
   max-width: auto;
   padding: 5px 10px;
-  border: 2px solid $accentMain;
+  border: 1px solid $accentMain;
   background: none;
   color: $accentMain;
   font-size: 14px;
@@ -784,7 +786,7 @@ h2 {
   margin-top: 20px;
   width: 80px;
   padding: 10px;
-  border: 2px solid $offWhiteMain;
+  border: 1px solid $offWhiteMain;
   background: none;
   color: $offWhiteMain;
   font-size: 14px;

@@ -192,14 +192,14 @@ p {
 }
 
 .auth-nav {
-  width: 40%;
+  width: 44%;
   margin: 0;
   text-decoration: none;
   color: #205586;
   font-weight: 600;
   font-size: 14px;
   text-align: center;
-  padding: 10px 17px;
+  padding: 10px 0;
   border-top: 1px solid #205586;
   font-family: "Rubik", sans-serif;
   -webkit-transition: all 0.2s ease-in-out;
@@ -260,7 +260,7 @@ form button {
   font-size: 16px;
   font-weight: 800;
   background-color: rgba(0, 0, 0, 0);
-  border: 2px solid #205586;
+  border: 1px solid #205586;
   color: #205586;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -296,6 +296,8 @@ nav {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   background-color: #ecebe3;
+  -webkit-box-shadow: 0px 0px 30px -10px grey;
+          box-shadow: 0px 0px 30px -10px grey;
 }
 
 .site-nav-container {
@@ -927,7 +929,7 @@ h2 {
   display: block;
   max-width: auto;
   padding: 5px 10px;
-  border: 2px solid #205586;
+  border: 1px solid #205586;
   background: none;
   color: #205586;
   font-size: 14px;
@@ -954,7 +956,7 @@ h2 {
   margin-top: 20px;
   width: 80px;
   padding: 10px;
-  border: 2px solid #ecebe3;
+  border: 1px solid #ecebe3;
   background: none;
   color: #ecebe3;
   font-size: 14px;
