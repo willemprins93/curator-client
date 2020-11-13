@@ -34,11 +34,10 @@ body {
 
 #subtitle {
   letter-spacing: 0.02em;
-  text-shadow: 0px 0px 8px lightgrey;
   margin: 0 0 20px 0;
   font-size: 20px;
   font-weight: 300;
-  color: #383838;
+  color: #205586;
 }
 
 h1,
@@ -162,11 +161,11 @@ p {
   height: auto;
   text-align: center;
   padding: 10px;
-  margin: 20px;
+  margin: 10px;
   color: #205586;
-  border: 2px solid #205586;
+  border: 1px solid #205586;
   text-decoration: none;
-  font-weight: 800;
+  font-weight: 600;
   font-family: "Rubik", sans-serif;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
