@@ -32,7 +32,7 @@ export const randomArtwork = (apiToken) => {
       return response.data;
     })
     .catch((err) => {
-      console.log("ERROR on the RandomArtwork", err);
+      console.log("ERROR on the RandomArtwork", err.response);
       return err.response;
     });
 };
