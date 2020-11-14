@@ -80,7 +80,10 @@ const Curator = (props) => {
     setArtworks([...artworks].slice(1));
     setTimeout(() => {
       setLoading(false);
-    }, 1200);
+    }, 1500);
+    getRandom()
+      .then((res) => addArt(res))
+      .catch(console.error);
   };
 
   return (
