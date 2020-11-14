@@ -55,9 +55,9 @@ const Curator = (props) => {
         })
         .catch(console.error);
     }
-    return () => {
-      setMount(false);
-    };
+    // return () => {
+    //   setMount(false);
+    // };
   }, [apiToken, isMounted]);
 
   useEffect(() => {
@@ -89,9 +89,9 @@ const Curator = (props) => {
         })
         .catch(console.error);
     }
-    return () => {
-      setMount(false);
-    };
+    // return () => {
+    //   setMount(false);
+    // };
   }, [artworks, isMounted]);
 
   const likeArtwork = function () {
