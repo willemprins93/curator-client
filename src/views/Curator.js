@@ -61,6 +61,7 @@ const Curator = (props) => {
   }, [apiToken, isMounted]);
 
   useEffect(() => {
+    console.log("LENGHT: ", artworks.length, "ISOMOUNTED: ", isMounted);
     if (artworks.length < 10 && artworks.length !== 0 && isMounted) {
       const threePromises = [1, 1, 1].map(() => getRandom());
       threePromises[0]
