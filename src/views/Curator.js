@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { randomArtwork, addArtwork } from "../services/curatorService";
 import { Link } from "react-router-dom";
 import ReactLoading from "react-loading";
+import { useCallback } from "react";
 
 const Curator = (props) => {
   const [isLoading, setLoading] = useState(true);
@@ -19,41 +20,25 @@ const Curator = (props) => {
     setApiToken(localStorage.getItem("apiToken"));
   }, []);
 
+  const addArt = (res) => {
+    if (
+      isMounted &&
+      res !== undefined &&
+      artworks.length < 10 &&
+      artworks.length
+    ) {
+      setArtworks((a) => [...a, res]);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     if (apiToken && artworks.length === 0 && isMounted) {
       const fourPromises = [1, 1, 1, 1].map(() => getRandom());
-      fourPromises[0]
-        .then((res) => {
-          if (isMounted && res !== undefined) {
-            setArtworks((a) => [...a, res]);
-            setLoading(false);
-          }
-        })
-        .catch(console.error);
-      fourPromises[1]
-        .then((res) => {
-          if (isMounted && res !== undefined) {
-            setArtworks((a) => [...a, res]);
-            setLoading(false);
-          }
-        })
-        .catch(console.error);
-      fourPromises[2]
-        .then((res) => {
-          if (isMounted && res !== undefined) {
-            setArtworks((a) => [...a, res]);
-            setLoading(false);
-          }
-        })
-        .catch(console.error);
-      fourPromises[3]
-        .then((res) => {
-          if (isMounted && res !== undefined) {
-            setArtworks((a) => [...a, res]);
-            setLoading(false);
-          }
-        })
-        .catch(console.error);
+      fourPromises[0].then((res) => addArt(res)).catch(console.error);
+      fourPromises[1].then((res) => addArt(res)).catch(console.error);
+      fourPromises[2].then((res) => addArt(res)).catch(console.error);
+      fourPromises[3].then((res) => addArt(res)).catch(console.error);
     }
     // return () => {
     //   setMount(false);
@@ -62,32 +47,11 @@ const Curator = (props) => {
 
   useEffect(() => {
     console.log("LENGHT: ", artworks.length, "ISOMOUNTED: ", isMounted);
-    if (artworks.length < 10 && artworks.length !== 0 && isMounted) {
+    if (artworks.length < 10 && artworks.length && isMounted) {
       const threePromises = [1, 1, 1].map(() => getRandom());
-      threePromises[0]
-        .then((res) => {
-          if (isMounted && res !== undefined) {
-            setArtworks((a) => [...a, res]);
-            setLoading(false);
-          }
-        })
-        .catch(console.error);
-      threePromises[1]
-        .then((res) => {
-          if (isMounted && res !== undefined) {
-            setArtworks((a) => [...a, res]);
-            setLoading(false);
-          }
-        })
-        .catch(console.error);
-      threePromises[2]
-        .then((res) => {
-          if (isMounted && res !== undefined) {
-            setArtworks((a) => [...a, res]);
-            setLoading(false);
-          }
-        })
-        .catch(console.error);
+      threePromises[0].then((res) => addArt(res)).catch(console.error);
+      threePromises[1].then((res) => addArt(res)).catch(console.error);
+      threePromises[2].then((res) => addArt(res)).catch(console.error);
     }
     // return () => {
     //   setMount(false);
