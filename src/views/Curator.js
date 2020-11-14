@@ -77,7 +77,7 @@ const Curator = (props) => {
 
   const dislikeArtwork = function () {
     setLoading(true);
-    setArtworks([...artworks].slice(1));
+    setArtworks((a) => a.slice(1));
     setTimeout(() => {
       setLoading(false);
     }, 1500);
