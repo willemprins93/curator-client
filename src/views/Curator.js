@@ -40,18 +40,18 @@ const Curator = (props) => {
     // };
   }, [apiToken, isMounted]);
 
-  useEffect(() => {
-    console.log("LENGHT: ", artworks.length, "ISOMOUNTED: ", isMounted);
-    if (artworks.length < 10 && artworks.length && isMounted) {
-      const threePromises = [1, 1, 1].map(() => getRandom());
-      threePromises[0].then((res) => addArt(res)).catch(console.error);
-      threePromises[1].then((res) => addArt(res)).catch(console.error);
-      threePromises[2].then((res) => addArt(res)).catch(console.error);
-    }
-    // return () => {
-    //   setMount(false);
-    // };
-  }, [artworks, isMounted]);
+  // useEffect(() => {
+  //   console.log("LENGHT: ", artworks.length, "ISOMOUNTED: ", isMounted);
+  //   if (artworks.length === 3 && artworks.length && isMounted) {
+  //     const threePromises = [1, 1, 1].map(() => getRandom());
+  //     threePromises[0].then((res) => addArt(res)).catch(console.error);
+  //     threePromises[1].then((res) => addArt(res)).catch(console.error);
+  //     threePromises[2].then((res) => addArt(res)).catch(console.error);
+  //   }
+  //   // return () => {
+  //   //   setMount(false);
+  //   // };
+  // }, [artworks, isMounted]);
 
   const likeArtwork = function () {
     const { artworkInfo, image } = artworks[0];
@@ -59,7 +59,10 @@ const Curator = (props) => {
     setArtworks([...artworks].slice(1));
     setTimeout(() => {
       setLoading(false);
-    }, 1200);
+    }, 1500);
+    getRandom()
+      .then((res) => addArt(res))
+      .catch(console.error);
     addArtwork({
       userId,
       apiToken,
