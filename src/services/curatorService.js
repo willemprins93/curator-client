@@ -27,8 +27,14 @@ export const getArtwork = (id) => {
 export const randomArtwork = (apiToken) => {
   return service
     .get(`/artwork/${apiToken}/random`)
-    .then((response) => response.data)
-    .catch((err) => err.response);
+    .then((response) => {
+      console.log("RESPONSE on the RandomArtwork", response);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log("ERROR on the RandomArtwork", err);
+      return err.response;
+    });
 };
 
 export const similarArtworks = ({ apiToken, id }) => {

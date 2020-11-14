@@ -24,7 +24,7 @@ const Curator = (props) => {
       const fourPromises = [1, 1, 1, 1].map(() => getRandom());
       fourPromises[0]
         .then((res) => {
-          if (isMounted) {
+          if (isMounted && res !== undefined) {
             setArtworks((a) => [...a, res]);
             setLoading(false);
           }
@@ -32,7 +32,7 @@ const Curator = (props) => {
         .catch(console.error);
       fourPromises[1]
         .then((res) => {
-          if (isMounted) {
+          if (isMounted && res !== undefined) {
             setArtworks((a) => [...a, res]);
             setLoading(false);
           }
@@ -40,7 +40,7 @@ const Curator = (props) => {
         .catch(console.error);
       fourPromises[2]
         .then((res) => {
-          if (isMounted) {
+          if (isMounted && res !== undefined) {
             setArtworks((a) => [...a, res]);
             setLoading(false);
           }
@@ -48,7 +48,7 @@ const Curator = (props) => {
         .catch(console.error);
       fourPromises[3]
         .then((res) => {
-          if (isMounted) {
+          if (isMounted && res !== undefined) {
             setArtworks((a) => [...a, res]);
             setLoading(false);
           }
@@ -58,14 +58,14 @@ const Curator = (props) => {
     return () => {
       setMount(false);
     };
-  }, [apiToken, artworks, isMounted]);
+  }, [apiToken, isMounted]);
 
   useEffect(() => {
     if (artworks.length < 10 && artworks.length !== 0 && isMounted) {
       const threePromises = [1, 1, 1].map(() => getRandom());
       threePromises[0]
         .then((res) => {
-          if (isMounted) {
+          if (isMounted && res !== undefined) {
             setArtworks((a) => [...a, res]);
             setLoading(false);
           }
@@ -73,7 +73,7 @@ const Curator = (props) => {
         .catch(console.error);
       threePromises[1]
         .then((res) => {
-          if (isMounted) {
+          if (isMounted && res !== undefined) {
             setArtworks((a) => [...a, res]);
             setLoading(false);
           }
@@ -81,7 +81,7 @@ const Curator = (props) => {
         .catch(console.error);
       threePromises[2]
         .then((res) => {
-          if (isMounted) {
+          if (isMounted && res !== undefined) {
             setArtworks((a) => [...a, res]);
             setLoading(false);
           }
