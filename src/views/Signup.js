@@ -77,6 +77,8 @@ class Signup extends React.Component {
                 onChange={this.handleChange}
                 required={true}
                 type="text"
+                autocomplete="off"
+                placeholder="Pablo"
               />
               <label>Email: </label>
               <input
@@ -85,6 +87,8 @@ class Signup extends React.Component {
                 onChange={this.handleChange}
                 required={true}
                 type="email"
+                autocomplete="off"
+                placeholder="pablo@picasso.es"
               />
               <label>Password: </label>
               <input
@@ -93,6 +97,8 @@ class Signup extends React.Component {
                 value={password}
                 onChange={this.handleChange}
                 required={true}
+                autocomplete="off"
+                placeholder="Guernica1937"
               />
               <button type="submit"> Sign Up </button>
             </form>

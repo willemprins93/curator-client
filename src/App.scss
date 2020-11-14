@@ -178,31 +178,46 @@ form {
   margin-top: -80px;
 }
 
-form label {
-  font-weight: 800;
-  color: 353831;
-}
-
 form label,
 input {
   display: block;
   width: 200px;
-  padding: 10px;
   height: auto;
   text-align: center;
 }
 
 form label {
+  font-weight: 500;
+  color: $greyMain;
+  margin-top: 10px;
+  padding: 8px 10px;
   font-family: "Rubik", sans-serif;
+  border-bottom: 1px solid $greyMain;
 }
 
 form input {
+  padding: 5px 10px;
   font-family: "Lato", sans-serif;
-  background-color: white;
+  background: none;
   color: $accentMain;
   font-size: 16px;
   border: none;
   outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+form input:focus {
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 8px 10px lightgrey;
+}
+
+form input::placeholder {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+}
+
+form input:focus::placeholder {
+  color: transparent;
 }
 
 form button {
@@ -213,7 +228,7 @@ form button {
   outline: none;
   font-family: "Rubik", sans-serif;
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 600;
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid $accentMain;
   color: $accentMain;
@@ -476,7 +491,7 @@ h3 {
 
 .similar-artworks-container h2 {
   font-weight: 500;
-  width: 100vw;
+  width: 90vw;
   text-align: center;
 }
 
@@ -494,6 +509,10 @@ h3 {
   height: 60vh;
   padding: 5%;
   transition: all 0.4s ease-in-out;
+}
+
+.similar-artwork-image-box .mini-title {
+  width: 12%;
 }
 
 .similar-artwork-image-box:hover .mini-title {

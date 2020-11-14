@@ -222,31 +222,75 @@ form {
   margin-top: -80px;
 }
 
-form label {
-  font-weight: 800;
-  color: 353831;
-}
-
 form label,
 input {
   display: block;
   width: 200px;
-  padding: 10px;
   height: auto;
   text-align: center;
 }
 
 form label {
+  font-weight: 500;
+  color: #636363;
+  margin-top: 10px;
+  padding: 8px 10px;
   font-family: "Rubik", sans-serif;
+  border-bottom: 1px solid #636363;
 }
 
 form input {
+  padding: 5px 10px;
   font-family: "Lato", sans-serif;
-  background-color: white;
+  background: none;
   color: #205586;
   font-size: 16px;
   border: none;
   outline: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+form input:focus {
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 0px 8px 10px lightgrey;
+          box-shadow: 0px 8px 10px lightgrey;
+}
+
+form input::-webkit-input-placeholder {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+}
+
+form input:-ms-input-placeholder {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+}
+
+form input::-ms-input-placeholder {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+}
+
+form input::placeholder {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+}
+
+form input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+form input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+
+form input:focus::-ms-input-placeholder {
+  color: transparent;
+}
+
+form input:focus::placeholder {
+  color: transparent;
 }
 
 form button {
@@ -257,7 +301,7 @@ form button {
   outline: none;
   font-family: "Rubik", sans-serif;
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 600;
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid #205586;
   color: #205586;
@@ -571,7 +615,7 @@ h3 {
 
 .similar-artworks-container h2 {
   font-weight: 500;
-  width: 100vw;
+  width: 90vw;
   text-align: center;
 }
 
@@ -599,6 +643,10 @@ h3 {
   padding: 5%;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
+}
+
+.similar-artwork-image-box .mini-title {
+  width: 12%;
 }
 
 .similar-artwork-image-box:hover .mini-title {
