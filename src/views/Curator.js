@@ -53,19 +53,19 @@ const Curator = (props) => {
   //   // };
   // }, [artworks, isMounted]);
 
-  useEffect(() => {
-    if (isLoading) {
-      setLoading(false);
-    }
-  }, [artworks[0]]);
+  // useEffect(() => {
+  //   if (isLoading) {
+  //     setLoading(false);
+  //   }
+  // }, [artworks[0]]);
 
   const likeArtwork = function () {
     const { artworkInfo, image } = artworks[0];
     setLoading(true);
-    setArtworks([...artworks].slice(1));
-    // setTimeout(() => {
-    //   setLoading(false);
-    // }, 1500);
+    setArtworks((a) => a.slice(1));
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
     getRandom()
       .then((res) => addArt(res))
       .catch(console.error);
@@ -84,9 +84,9 @@ const Curator = (props) => {
   const dislikeArtwork = function () {
     setLoading(true);
     setArtworks((a) => a.slice(1));
-    // setTimeout(() => {
-    //   setLoading(false);
-    // }, 1500);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
     getRandom()
       .then((res) => addArt(res))
       .catch(console.error);
