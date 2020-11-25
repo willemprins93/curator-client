@@ -83,8 +83,9 @@ const Curator = (props) => {
   const likeArtwork = function () {
     const likedArtwork = artworks[0];
     setLoading(true);
-    setLoading(true);
-    const newArr = artworks.filter((work) => work !== likedArtwork);
+    const newArr = [...artworks].filter(
+      (work) => work.image !== likedArtwork.image
+    );
     setArtworks(newArr);
     setTimeout(() => {
       setLoading(false);
@@ -107,7 +108,9 @@ const Curator = (props) => {
   const dislikeArtwork = function () {
     const dislikedArtwork = artworks[0];
     setLoading(true);
-    const newArr = artworks.filter((work) => work !== dislikedArtwork);
+    const newArr = [...artworks].filter(
+      (work) => work.image !== dislikedArtwork.image
+    );
     setArtworks(newArr);
     setTimeout(() => {
       setLoading(false);
