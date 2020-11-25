@@ -21,7 +21,9 @@ const Curator = (props) => {
   }, []);
 
   const addArt = (res) => {
+    console.log("data received");
     if (isMounted && res !== undefined && artworks.length < 10 && !res.status) {
+      console.log("through first check");
       if (!artworks.includes(res)) {
         console.log("setting new artwork");
         setArtworks((a) => [...a, res]);
