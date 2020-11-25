@@ -28,13 +28,9 @@ const Curator = (props) => {
       res.status !== 500
     ) {
       console.log("setting the artwork in array: ", res);
-      setArtworks((a) => (a.length < 10 ? [...a, res] : a));
+      setArtworks((a) => [...a, res]);
       console.log("array after adding: ", artworks);
       setLoading(false);
-    } else {
-      getRandom()
-        .then((res) => addArt(res))
-        .catch((err) => console.error);
     }
   };
 
