@@ -46,17 +46,17 @@ const Curator = (props) => {
         getRandom()
           .then((res) => addArt(res))
           .catch(console.error);
-      }, 10);
+      }, 500);
       setTimeout(() => {
         getRandom()
           .then((res) => addArt(res))
           .catch(console.error);
-      }, 20);
+      }, 1000);
       setTimeout(() => {
         getRandom()
           .then((res) => addArt(res))
           .catch(console.error);
-      }, 30);
+      }, 2000);
     }
   }, [apiToken, isMounted]);
 
