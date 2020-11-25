@@ -21,12 +21,7 @@ const Curator = (props) => {
   }, []);
 
   const addArt = (res) => {
-    if (
-      isMounted &&
-      res !== undefined &&
-      artworks.length < 10 &&
-      res.status !== 500
-    ) {
+    if (isMounted && res !== undefined && artworks.length < 10 && !res.status) {
       if (!artworks.includes(res)) {
         setArtworks((a) => [...a, res]);
         setLoading(false);
