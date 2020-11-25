@@ -62,7 +62,9 @@ const Curator = (props) => {
   const likeArtwork = function () {
     const { artworkInfo, image } = artworks[0];
     setLoading(true);
+    console.log("ARTWORKS BEFORE: ", artworks);
     setArtworks((a) => a.slice(1));
+    console.log("ARTWORKS AFTER: ", artworks);
     setTimeout(() => {
       setLoading(false);
     }, 1500);
@@ -83,7 +85,9 @@ const Curator = (props) => {
 
   const dislikeArtwork = function () {
     setLoading(true);
+    console.log("ARTWORKS BEFORE: ", artworks);
     setArtworks((a) => a.slice(1));
+    console.log("ARTWORKS AFTER: ", artworks);
     setTimeout(() => {
       setLoading(false);
     }, 1500);
