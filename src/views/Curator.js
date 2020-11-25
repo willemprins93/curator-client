@@ -25,11 +25,16 @@ const Curator = (props) => {
       isMounted &&
       res !== undefined &&
       artworks.length < 10 &&
-      res.status == 200
+      res.status === 200
     ) {
-      console.log("setting the first: ", res);
+      console.log("setting the artwork in array: ", res);
       setArtworks((a) => (a.length < 10 ? [...a, res] : a));
+      console.log("array after adding: ", artworks);
       setLoading(false);
+    } else {
+      getRandom()
+        .then((res) => addArt(res))
+        .catch((err) => console.error);
     }
   };
 
