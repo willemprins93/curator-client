@@ -38,21 +38,31 @@ const Curator = (props) => {
 
   useEffect(() => {
     if (apiToken && artworks.length === 0 && isMounted) {
-      // const fourPromises = [1, 2, 3, 4].map(() => getRandom());
       getRandom()
         .then((res) => addArt(res))
         .catch(console.error);
-      // getRandom()
-      //   .then((res) => addArt(res))
-      //   .catch(console.error);
-      // getRandom()
-      //   .then((res) => addArt(res))
-      //   .catch(console.error);
-      // getRandom()
-      //   .then((res) => addArt(res))
-      //   .catch(console.error);
+      setTimeout(() => {
+        if (artworks.length === 0)
+          getRandom()
+            .then((res) => addArt(res))
+            .catch(console.error);
+      }, 2500);
+      setTimeout(() => {
+        if (artworks.length === 0)
+          getRandom()
+            .then((res) => addArt(res))
+            .catch(console.error);
+      }, 5000);
     }
   }, [apiToken, isMounted]);
+
+  useEffect(() => {
+    if (artworks.length < 5) {
+      getRandom()
+        .then((res) => addArt(res))
+        .catch(console.error);
+    }
+  }, [artworks]);
 
   useEffect(() => {
     return () => {
