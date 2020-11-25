@@ -81,12 +81,11 @@ const Curator = (props) => {
   // }, [artworks[0]]);
 
   const likeArtwork = function () {
-    const { artworkInfo, image } = artworks[0];
+    const likedArtwork = artworks[0];
     setLoading(true);
-    const worksCopy = artworks.slice(1);
-    worksCopy[0].image === image
-      ? setArtworks(worksCopy.slice(1))
-      : setArtworks(worksCopy);
+    setLoading(true);
+    const newArr = artworks.filter((work) => work !== likedArtwork);
+    setArtworks(newArr);
     setTimeout(() => {
       setLoading(false);
     }, 1500);
@@ -96,8 +95,8 @@ const Curator = (props) => {
     addArtwork({
       userId,
       apiToken,
-      artwork: artworkInfo,
-      image,
+      artwork: likedArtwork.artworkInfo,
+      image: likedArtwork.image,
     })
       .then((res) => {
         console.log(res);
@@ -106,11 +105,10 @@ const Curator = (props) => {
   };
 
   const dislikeArtwork = function () {
+    const dislikedArtwork = artworks[0];
     setLoading(true);
-    const worksCopy = artworks.slice(1);
-    worksCopy[0].image === image
-      ? setArtworks(worksCopy.slice(1))
-      : setArtworks(worksCopy);
+    const newArr = artworks.filter((work) => work !== dislikedArtwork);
+    setArtworks(newArr);
     setTimeout(() => {
       setLoading(false);
     }, 1500);
