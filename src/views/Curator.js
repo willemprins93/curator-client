@@ -40,17 +40,23 @@ const Curator = (props) => {
     if (apiToken && artworks.length === 0 && isMounted) {
       // const fourPromises = [1, 2, 3, 4].map(() => getRandom());
       getRandom()
-        .then((res) => addArt([...res][0]))
+        .then((res) => addArt(res))
         .catch(console.error);
-      getRandom()
-        .then((res) => addArt([...res][0]))
-        .catch(console.error);
-      getRandom()
-        .then((res) => addArt([...res][0]))
-        .catch(console.error);
-      getRandom()
-        .then((res) => addArt([...res][0]))
-        .catch(console.error);
+      setTimeout(() => {
+        getRandom()
+          .then((res) => addArt(res))
+          .catch(console.error);
+      }, 10);
+      setTimeout(() => {
+        getRandom()
+          .then((res) => addArt(res))
+          .catch(console.error);
+      }, 20);
+      setTimeout(() => {
+        getRandom()
+          .then((res) => addArt(res))
+          .catch(console.error);
+      }, 30);
     }
   }, [apiToken, isMounted]);
 
