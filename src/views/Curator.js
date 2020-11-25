@@ -25,7 +25,7 @@ const Curator = (props) => {
       isMounted &&
       res !== undefined &&
       artworks.length < 10 &&
-      res.status === 200
+      res.status !== 500
     ) {
       console.log("setting the artwork in array: ", res);
       setArtworks((a) => (a.length < 10 ? [...a, res] : a));
