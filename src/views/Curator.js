@@ -21,18 +21,9 @@ const Curator = (props) => {
   }, []);
 
   const addArt = (res) => {
-    console.log("data received");
     if (isMounted && res !== undefined && artworks.length < 10 && !res.status) {
-      console.log("through first check");
-      if (!artworks.some(({ image }) => image === res.image)) {
-        console.log("setting new artwork");
-        setArtworks((a) => [...a, res]);
-        setLoading(false);
-      } else {
-        getRandom()
-          .then((res) => addArt(res))
-          .catch(console.error);
-      }
+      setArtworks((a) => [...a, res]);
+      setLoading(false);
     }
   };
 
@@ -92,7 +83,10 @@ const Curator = (props) => {
   const likeArtwork = function () {
     const { artworkInfo, image } = artworks[0];
     setLoading(true);
-    setArtworks((a) => [...a].slice(1));
+    const worksCopy = [...a].slice(1);
+    worksCopy[0].image === image
+      ? setArtworks(worksCopy.slice(1))
+      : setArtworks(worksCopy);
     setTimeout(() => {
       setLoading(false);
     }, 1500);
@@ -113,7 +107,10 @@ const Curator = (props) => {
 
   const dislikeArtwork = function () {
     setLoading(true);
-    setArtworks((a) => [...a].slice(1));
+    const worksCopy = [...a].slice(1);
+    worksCopy[0].image === image
+      ? setArtworks(worksCopy.slice(1))
+      : setArtworks(worksCopy);
     setTimeout(() => {
       setLoading(false);
     }, 1500);
