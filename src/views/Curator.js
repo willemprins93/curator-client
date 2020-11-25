@@ -29,7 +29,7 @@ const Curator = (props) => {
 
   useEffect(() => {
     if (apiToken && artworks.length === 0 && isMounted) {
-      const fourPromises = [1, 1, 1, 1].map(() => getRandom());
+      const fourPromises = [1, 2, 3, 4].map(() => getRandom());
       Promise.all(fourPromises)
         .then((values) => {
           setArtworks(values);
