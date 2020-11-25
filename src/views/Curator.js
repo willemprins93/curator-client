@@ -30,10 +30,15 @@ const Curator = (props) => {
   useEffect(() => {
     if (apiToken && artworks.length === 0 && isMounted) {
       const fourPromises = [1, 1, 1, 1].map(() => getRandom());
-      fourPromises[0].then((res) => addArt(res)).catch(console.error);
-      fourPromises[1].then((res) => addArt(res)).catch(console.error);
-      fourPromises[2].then((res) => addArt(res)).catch(console.error);
-      fourPromises[3].then((res) => addArt(res)).catch(console.error);
+      Promise.all(fourPromises)
+        .then((values) => {
+          setArtworks(values);
+        })
+        .catch((err) => console.error);
+      // fourPromises[0].then((res) => addArt(res)).catch(console.error);
+      // fourPromises[1].then((res) => addArt(res)).catch(console.error);
+      // fourPromises[2].then((res) => addArt(res)).catch(console.error);
+      // fourPromises[3].then((res) => addArt(res)).catch(console.error);
     }
     return () => {
       setMount(false);
