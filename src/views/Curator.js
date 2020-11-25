@@ -24,7 +24,7 @@ const Curator = (props) => {
     console.log("data received");
     if (isMounted && res !== undefined && artworks.length < 10 && !res.status) {
       console.log("through first check");
-      if (!artworks.includes(res)) {
+      if (!artworks.some(({ image }) => image === res.image)) {
         console.log("setting new artwork");
         setArtworks((a) => [...a, res]);
         setLoading(false);
