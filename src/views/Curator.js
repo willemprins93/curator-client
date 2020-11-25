@@ -52,10 +52,13 @@ const Curator = (props) => {
         .then((res) => addArt(res))
         .catch(console.error);
     }
+  }, [apiToken, isMounted]);
+
+  useEffect(() => {
     return () => {
       setMount(false);
     };
-  }, [apiToken, isMounted]);
+  }, []);
 
   // useEffect(() => {
   //   console.log("LENGHT: ", artworks.length, "ISOMOUNTED: ", isMounted);
